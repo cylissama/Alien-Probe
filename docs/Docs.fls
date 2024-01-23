@@ -1,8 +1,8 @@
-PWD /Users/cylis/Documents/SeniorSoftwareProject
+PWD /Users/cylis/Documents/SeniorSoftwareProject/docs
 INPUT /usr/local/texlive/2023/texmf.cnf
 INPUT /usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/cylis/Documents/SeniorSoftwareProject/Docs.tex
+INPUT /Users/cylis/Documents/SeniorSoftwareProject/docs/Docs.tex
 OUTPUT Docs.log
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
