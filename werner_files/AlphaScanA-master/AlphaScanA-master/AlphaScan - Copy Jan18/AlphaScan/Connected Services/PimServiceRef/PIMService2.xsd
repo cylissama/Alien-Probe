@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PIMWcfService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PIMWcfService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://161.6.106.201/PIMService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
+  <xs:complexType name="CompositeType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:complexType name="RunningCountData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Facility" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OccupiedSpaces" type="xs:int" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RunningCountData" nillable="true" type="tns:RunningCountData" />
+  <xs:complexType name="ArrayOfRFIDTag">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RFIDTag" nillable="true" type="tns:RFIDTag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRFIDTag" nillable="true" type="tns:ArrayOfRFIDTag" />
+  <xs:complexType name="RFIDTag">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Antenna" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Card" type="xs:int" />
+      <xs:element minOccurs="0" name="FAC" type="xs:int" />
+      <xs:element minOccurs="0" name="GPSData" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastDetect" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Lot" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Range" type="xs:int" />
+      <xs:element minOccurs="0" name="RawHex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Response" nillable="true" type="tns:TagFunctionResponse" />
+      <xs:element minOccurs="0" name="TagHex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isWritten" type="xs:boolean" />
+      <xs:element minOccurs="0" name="permitString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="prefix" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RFIDTag" nillable="true" type="tns:RFIDTag" />
+  <xs:complexType name="TagFunctionResponse">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="Color" type="q1:Color" />
+      <xs:element minOccurs="0" name="Handled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsIgnored" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Response" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TagFunctionResponse" nillable="true" type="tns:TagFunctionResponse" />
+</xs:schema>

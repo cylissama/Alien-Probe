@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LotCount LotName="Adams" Zone="H1" StartTime="2017-08-01T10:52:03.5190042-05:00" EndTime="2017-08-01T10:52:34.9530042-05:00">
+  <Prefix name="17H6">1</Prefix>
+  <Prefix name="17WS">2</Prefix>
+  <Prefix name="18FS2">26</Prefix>
+  <Prefix name="17AS">1</Prefix>
+  <Prefix name="18C2">5</Prefix>
+  <Prefix name="17C2">2</Prefix>
+  <Prefix name="17W1">1</Prefix>
+  <Prefix name="17WR">1</Prefix>
+  <Prefix name="17W2">1</Prefix>
+  <Prefix name="17H1">1</Prefix>
+  <Prefix name="18H5">2</Prefix>
+  <Prefix name="17FS1">1</Prefix>
+  <Prefix name="17C1">1</Prefix>
+  <Prefix name="17H3">1</Prefix>
+  <Prefix name="17H2">1</Prefix>
+</LotCount>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3f0e249a-db12-492a-a680-ad01e933cdbd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://161.6.106.201/PIMService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PIMService.xsd" MetadataType="Schema" ID="3b4547cc-efd2-42f5-82df-3e9d76a1c520" SourceId="1" SourceUrl="http://161.6.106.201/PIMService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PIMService.disco" MetadataType="Disco" ID="0cc7f549-0be9-4be6-b69d-8d69088be868" SourceId="1" SourceUrl="http://161.6.106.201/PIMService.svc?disco" />
+    <MetadataFile FileName="PIMService.wsdl" MetadataType="Wsdl" ID="dcdbd91c-9dca-479f-912e-baf6f7807809" SourceId="1" SourceUrl="http://161.6.106.201/PIMService.svc?wsdl" />
+    <MetadataFile FileName="PIMService4.xsd" MetadataType="Schema" ID="4f047323-7657-469e-8a01-c751310c830a" SourceId="1" SourceUrl="http://161.6.106.201/PIMService.svc?xsd=xsd4" />
+    <MetadataFile FileName="PIMService1.xsd" MetadataType="Schema" ID="ad48b6ea-f7c6-4f11-a07c-461a2827224d" SourceId="1" SourceUrl="http://161.6.106.201/PIMService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PIMService2.xsd" MetadataType="Schema" ID="3e9b45d5-1c98-4466-9390-44ce3f5b08a6" SourceId="1" SourceUrl="http://161.6.106.201/PIMService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PIMService3.xsd" MetadataType="Schema" ID="7056c409-ea8a-40a4-b621-739182bc7503" SourceId="1" SourceUrl="http://161.6.106.201/PIMService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

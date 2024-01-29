@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="AlphaScan.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+    <connectionStrings>
+        <add name="AlphaScan.Properties.Settings.AlphaScanDBConnectionString"
+            connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\AppData\AlphaScanDB.mdf;Integrated Security=True"
+            providerName="System.Data.SqlClient" />
+    </connectionStrings>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
+    </startup>
+    <userSettings>
+        <AlphaScan.Properties.Settings>
+            <setting name="Filename" serializeAs="String">
+                <value>Permitzones.xml</value>
+            </setting>
+            <setting name="BlacklistFile" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="IgnoreListFile" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="ReaderURIs" serializeAs="String">
+                <value>tmr://pts-ticket-1.dyn.wku.edu</value>
+            </setting>
+            <setting name="ReaderURI" serializeAs="String">
+                <value>tmr://pts-ticket-1.dyn.wku.edu</value>
+            </setting>
+            <setting name="CamSettingsList" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="NoReaderMode" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="AlienServerPort" serializeAs="String">
+                <value>333</value>
+            </setting>
+            <setting name="TagFormat" serializeAs="String">
+                <value>${TAGID},${DATE1},${TIME1},${MSEC2}${DATE2},${TIME2},${MSEC2},${COUNT},${TX},${RX},${PROTO#},${PROTO},${PCWORD},${RSSI},${RSSI_MAX},${NAME},${HOST},${SPEED},${SPEED_MIN},${SPEED_MAXs},${SPEED_TOP},${DIR}</value>
+            </setting>
+        </AlphaScan.Properties.Settings>
+    </userSettings>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_IPIMService" />
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://161.6.106.201/PIMService.svc" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IPIMService" contract="PimServiceRef.IPIMService"
+                name="BasicHttpBinding_IPIMService" />
+        </client>
+    </system.serviceModel>
+</configuration>

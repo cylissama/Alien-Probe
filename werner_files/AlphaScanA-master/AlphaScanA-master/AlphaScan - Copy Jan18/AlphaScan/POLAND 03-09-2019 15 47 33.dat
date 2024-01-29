@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LotCount LotName="POLAND" Zone="H4" StartTime="2019-09-03T15:43:11.8952705-05:00" EndTime="2019-09-03T15:47:39.7686564-05:00">
+  <Prefix name="20H4">119</Prefix>
+  <Prefix name="20C1">1</Prefix>
+  <Prefix name="20H5">1</Prefix>
+  <Prefix name="20WR">3</Prefix>
+</LotCount>

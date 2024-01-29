@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AlphaScan.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Filename" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Permitzones.xml</Value>
+    </Setting>
+    <Setting Name="BlacklistFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IgnoreListFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ReaderURIs" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tmr://pts-ticket-1.dyn.wku.edu</Value>
+    </Setting>
+    <Setting Name="ReaderURI" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tmr://pts-ticket-1.dyn.wku.edu</Value>
+    </Setting>
+    <Setting Name="CamSettingsList" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="NoReaderMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AlienServerPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">333</Value>
+    </Setting>
+    <Setting Name="TagFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">${TAGID},${DATE1},${TIME1},${MSEC2}${DATE2},${TIME2},${MSEC2},${COUNT},${TX},${RX},${PROTO#},${PROTO},${PCWORD},${RSSI},${RSSI_MAX},${NAME},${HOST},${SPEED},${SPEED_MIN},${SPEED_MAXs},${SPEED_TOP},${DIR}</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

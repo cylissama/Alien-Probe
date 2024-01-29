@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AlphaScan.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Filename" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Permitzones.xml</Value>
+    </Setting>
+    <Setting Name="BlacklistFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IgnoreListFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ReaderURIs" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tmr://pts-ticket-1.dyn.wku.edu</Value>
+    </Setting>
+    <Setting Name="ReaderURI" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tmr://192.168.0.2</Value>
+    </Setting>
+    <Setting Name="CamSettingsList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">{&lt;?xml version="1.0" encoding="utf-16"?&gt;\r\n&lt;ArrayOfCamConfigSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;\r\n  &lt;CamConfigSettings&gt;\r\n    &lt;Moniker&gt;@device:pnp:\\?\usb#vid_046d&amp;amp;pid_08d7&amp;amp;mi_00#6&amp;amp;14c7dcf8&amp;amp;0&amp;amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\{9b365890-165f-11d0-a195-0020afd156e4}&lt;/Moniker&gt;\r\n    &lt;VideoResolution&gt;0&lt;/VideoResolution&gt;\r\n    &lt;PhotoResolution&gt;0&lt;/PhotoResolution&gt;\r\n    &lt;Antennas&gt;\r\n      &lt;boolean&gt;true&lt;/boolean&gt;\r\n      &lt;boolean&gt;true&lt;/boolean&gt;\r\n      &lt;boolean&gt;false&lt;/boolean&gt;\r\n      &lt;boolean&gt;false&lt;/boolean&gt;\r\n    &lt;/Antennas&gt;\r\n  &lt;/CamConfigSettings&gt;\r\n&lt;/ArrayOfCamConfigSettings&gt;}</Value>
+    </Setting>
+    <Setting Name="NoReaderMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

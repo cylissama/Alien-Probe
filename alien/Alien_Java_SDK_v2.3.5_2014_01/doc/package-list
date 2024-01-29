@@ -1,0 +1,6 @@
+com.alien.enterpriseRFID.discovery
+com.alien.enterpriseRFID.externalio
+com.alien.enterpriseRFID.notify
+com.alien.enterpriseRFID.reader
+com.alien.enterpriseRFID.tags
+com.alien.enterpriseRFID.util
