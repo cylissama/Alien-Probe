@@ -1,0 +1,60 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GmapGui"
+        xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" x:Class="GmapGui.EnforcementWindow"
+        mc:Ignorable="d"
+        Title="Enforcement" Height="1080" Width="1920" WindowState="Maximized" Icon="Transparent CES Logo.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="400*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*" />
+            <ColumnDefinition Width="48*" />
+        </Grid.ColumnDefinitions>
+
+        <DockPanel x:Name="dpl_enforcement" VerticalAlignment="Stretch" Grid.Row="0" Grid.ColumnSpan="2">
+            <Menu x:Name="enforcementTabs" Background="#b01e24" Foreground="White" FontSize="18">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate >
+                        <DockPanel VerticalAlignment="Stretch" LastChildFill="False"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+                <MenuItem Name="exit_Enforcement" Background="#b01e24" Header="_Exit ✕" Foreground="White" FontSize="18" DockPanel.Dock="Right" Click="exit_Enforcement_Click"/>
+                <MenuItem Name="map_Change" Background="#b01e24" Header="_Change Map Type" Foreground="White" FontSize="18" DockPanel.Dock="Left">
+                    <MenuItem  Name="mapView_Sat" Header="Satellite View" Background="#b01e24" Click="mapView_Click"/>
+                    <MenuItem  Name="mapView_Map" Header="Map View" Background="#b01e24" Click="mapView_Click"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+
+        <WindowsPresentation:GMapControl Name="MainMap" Grid.ColumnSpan="2" Margin="0" Grid.Row="1" RenderTransformOrigin="-2.92,-0.02" MouseWheel="MainMap_MouseWheel">
+            
+
+        </WindowsPresentation:GMapControl>
+
+        <Slider Name="slr_Zoom" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="49" Width="369" Margin="0,0,10,10" Maximum="12" TickPlacement="BottomRight" IsSnapToTickEnabled="False" ValueChanged="Slider_ValueChanged" Value="6"/>
+
+        <DockPanel Background="#b01e24" Grid.Row="1" Grid.Column="0">
+            <DockPanel Name="dpl_Summary" DockPanel.Dock="Bottom">
+                <TextBox Name="txb_lotName" Text="Selected Lot: " DockPanel.Dock="Top" IsReadOnly="True" FontSize="16"/>
+                <TextBox Name="txb_maxOccupancy" Text="Maximum Occupancy: " DockPanel.Dock="Top" IsReadOnly="True" FontSize="16"/>
+                <TextBox Name="txb_spotsOccupied" Text="Spots Occupied: " DockPanel.Dock="Top" IsReadOnly="True" FontSize="16"/>
+                <TextBox Name="txb_validParks" Text="Valid: " DockPanel.Dock="Top" IsReadOnly="True" FontSize="16"/>
+                <TextBox Name="txb_invalidParks" Text="Invalid: " DockPanel.Dock="Top" IsReadOnly="True" FontSize="16"/>
+                <TextBox Name="txb_blacklistedParks" Text="Blacklisted: " DockPanel.Dock="Top" IsReadOnly="True" FontSize="16"/>
+            </DockPanel>
+            <TreeView Name="trv_LotList" FontSize="18" Margin="0,0,0,3" >
+               <!-- <Button x:Name="BUTTON" Content="GENERATE DATA" VerticalAlignment="Top" Width="149" Height="26" Click="BUTTON_Click" Visibility="Hidden"/>
+                <Button Name="LoadCSV" Content="LoadCSV" VerticalAlignment="Top" Width="149" Click="LoadCSV_Click" Visibility="Hidden"/>
+                <Button Name="ClearGPSPoints" Content="ClearGPSPoints" VerticalAlignment="Top" Width="149" Click="ClearGPSPoints_Click" Visibility="Hidden"/>
+                <Button Name="LocalizeTags" Content="Localize Tags" VerticalAlignment="Top" Width="149"  Visibility="Hidden"/> -->
+            </TreeView>
+            
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,35 @@
+﻿<Window x:Class="GmapGui.alphaScanMainMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+    xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+        mc:Ignorable="d"
+        Title="AlphaScan Preliminary GUI" Height="300" Width="400" Icon="\Images\Transparent CES Logo.png" WindowState="Normal" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" Background="Transparent">
+    <Border BorderBrush="White" BorderThickness="5" CornerRadius="27" Background="#b01e24">
+    <Grid>
+        
+        <DockPanel Background="#b01e24" VerticalAlignment="Center">
+            <Menu Background="#b01e24" Foreground="White">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate >
+                        <DockPanel VerticalAlignment="Stretch" LastChildFill="False"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+
+                    <MenuItem x:Name="mainMenu_DataAcquisition" Header="Data Acquisition" DockPanel.Dock="Top" FontSize="32"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="mainMenu_DataAcquisition_Click"/>
+                <Separator x:Name="mainMenu_DataA" DockPanel.Dock="Top" Background="White" Width="600" FlowDirection="RightToLeft"/>
+                <MenuItem Name="mainMenu_MapManager" Header="Map Manager" DockPanel.Dock="Top" HorizontalAlignment="Center" FontSize="32" VerticalAlignment="Center" Click="mainMenu_MapManager_Click" IsEnabled="False"/>
+                <Separator DockPanel.Dock="Top" Background="White" Width="593" FlowDirection="RightToLeft"/>
+                <MenuItem Name="mainMenu_Enforcement" Header="Enforcement" FontSize="32" VerticalAlignment="Center" HorizontalAlignment="Center" Width="191" DockPanel.Dock="Top" Click="mainMenu_Enforcement_Click"/>
+                <Separator DockPanel.Dock="Top" Background="White" Width="600" FlowDirection="RightToLeft"/>
+                <MenuItem Name ="mainMenu_Settings" Header="Settings" DockPanel.Dock="Top" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="mainMenu_Settings_Click"/>
+                <Separator DockPanel.Dock="Top" Background="White" FlowDirection="RightToLeft" Width="602"/>
+                <MenuItem Name="mainMenu_Exit" Header="Exit" DockPanel.Dock="Top" FontSize="32" VerticalAlignment="Center" Click="mainMenu_Exit_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Width="63"/>
+            </Menu>
+
+        </DockPanel>
+    </Grid>
+    </Border>
+</Window>
