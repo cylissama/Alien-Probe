@@ -4,6 +4,11 @@ import java.util.stream.Collectors;
 
 public class AlienGetTagList {
 
+    public String readerIP;
+    public String readerPort;
+    public String readerUserName;
+    public String readerPassword;
+
     public static void main(String[] args) {
         List<String> tagList = GetTagList();
         for (String line : tagList) {
