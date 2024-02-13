@@ -3,8 +3,9 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/javafx-sdk-21.0.2/lib" />
       <root url="jar://$USER_HOME$/Downloads/Alien Java SDK v2.2.4 Feb-2008/jars/AlienRFID.jar!/" />
-      <root url="jar:///Library/Java/JavaVirtualMachines/ojdbc11.jar!/" />
-      <root url="jar:///Library/Java/JavaVirtualMachines/ucp11.jar!/" />
+      <root url="jar:///Library/Java/JavaVirtualMachines/sqlite-jdbc-3.45.1.0.jar!/" />
+      <root url="jar:///Library/Java/JavaVirtualMachines/slf4j-api-1.7.36.jar!/" />
+      <root url="jar:///Library/Java/JavaVirtualMachines/mysql-connector-j-8.3.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <NATIVE>

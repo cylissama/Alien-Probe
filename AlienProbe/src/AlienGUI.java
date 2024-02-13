@@ -2,13 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
+import java.sql.DriverManager;
+import java.sql.Connection;
+
 
 public class AlienGUI extends JFrame {
+
+    Connection conn = databaseConnect();
 
     AlienGetTagList tagGetter = new AlienGetTagList();
     DefaultListModel<String> listModel = new DefaultListModel<>();
@@ -16,6 +19,9 @@ public class AlienGUI extends JFrame {
     private JLabel statusLabel; // Label to show the current status
 
     public AlienGUI() {
+
+        tagGetter.openReader();
+
         setTitle("Alien P.R.O.B.E"); //Precision RFID Operational Bridge for Efficiency
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 300); // Set the initial size
@@ -59,23 +65,7 @@ public class AlienGUI extends JFrame {
         settingsPanel.add(portLabel, gbc);
         gbc.gridy++;
         settingsPanel.add(portTextField, gbc);
-//        settingsPanel.add(usernameLabel);
-//        settingsPanel.add(usernameTextField);
-//        settingsPanel.add(passwordLabel);
-//        settingsPanel.add(passwordTextField);
-//        settingsPanel.add(IPLabel);
-//        settingsPanel.add(IPTextField);
-//        settingsPanel.add(portLabel);
-//        settingsPanel.add(portTextField);
 
-
-//        textField.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                myStringVar = textField.getText(); // Update string variable on text input
-//                System.out.println("Updated string variable to: " + myStringVar);
-//            }
-//        });
         //READS
         JList<String> readsList = new JList<>(listModel);
         JScrollPane scrollPane = new JScrollPane(readsList);
@@ -94,37 +84,34 @@ public class AlienGUI extends JFrame {
 
         // Initialize the status label and set its initial text
         statusLabel = new JLabel("Standby");
-        statusLabel.setHorizontalAlignment(JLabel.RIGHT); // Align the text to the right
+        statusLabel.setHorizontalAlignment(JLabel.RIGHT);
 
         // Layout for the bottom panel
         JPanel bottomPanel = new JPanel(new BorderLayout());
-        bottomPanel.add(buttonPanel, BorderLayout.WEST); // Add button panel to the left
-        bottomPanel.add(statusLabel, BorderLayout.EAST); // Add status label to the right
+        bottomPanel.add(buttonPanel, BorderLayout.WEST);
+        bottomPanel.add(statusLabel, BorderLayout.EAST);
 
         operationPanel.add(scrollPane, BorderLayout.CENTER);
-        operationPanel.add(bottomPanel, BorderLayout.SOUTH); // Use the bottom panel here
+        operationPanel.add(bottomPanel, BorderLayout.SOUTH);
 
         tabbedPane.addTab("Operation", operationPanel);
         tabbedPane.addTab("Settings", settingsPanel);
 
-//      //add(topPanel, BorderLayout.NORTH);
         add(tabbedPane);
-
-        // Define the timer but don't start it yet
         timer = new Timer(5000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Add a new item to the list model every second
                 List<String> tagList = tagGetter.GetTagList();
-                listModel.addElement("\n--------------------------------\n");
+                if (tagList == null) {
+                    listModel.addElement("No Scans");
+                }
                 for(String tag : tagList) {
-                    System.out.println(tag);
                     listModel.addElement(tag);
+                    insertRfidData(tag, new java.sql.Timestamp(System.currentTimeMillis()));
                 }
             }
         });
-
-        // Start button starts the timer and updates the status
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -134,8 +121,6 @@ public class AlienGUI extends JFrame {
                 }
             }
         });
-
-        // Stop button stops the timer and updates the status
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -145,8 +130,6 @@ public class AlienGUI extends JFrame {
                 }
             }
         });
-
-        // Clear button clears the list
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -156,15 +139,32 @@ public class AlienGUI extends JFrame {
 
         setVisible(true);
     }
+    public Connection databaseConnect(){
+        String url = "jdbc:mysql://localhost:3306/alienbase";
+        String username = "root";
+        String password = "Dreamville01";
+        Connection conn;
 
-    public void updateReadsList(List<String> tagList) {
-        SwingUtilities.invokeLater(() -> {
-            listModel.clear(); // Optional: Clear existing entries
-            for(String tag : tagList) {
-                System.out.println(tag);
-                listModel.addElement(tag);
+        {
+            try {
+                conn = DriverManager.getConnection(url, username, password);
+                System.out.println("Connected");
+            } catch (SQLException e) {
+                System.out.println("Error");
+                throw new RuntimeException(e);
             }
-        });
+        }
+        return conn;
+    }
+    private void insertRfidData(String rfidId, java.sql.Timestamp timestamp) {
+        String insertSql = "INSERT INTO rfid_logs (rfid_id, timestamp) VALUES (?, ?);";
+        try (PreparedStatement pstmt = conn.prepareStatement(insertSql)) {
+            pstmt.setString(1, rfidId);
+            pstmt.setTimestamp(2, timestamp);
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Insert RFID Data Error: " + ex.getMessage());
+        }
     }
 
     public static void main(String[] args) {
