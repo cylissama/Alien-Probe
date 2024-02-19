@@ -4,7 +4,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,20 +14,22 @@
             android:id="@+id/alien_probe_logo"
             android:layout_width="match_parent"
             android:layout_height="356dp"
-            android:src="@drawable/alien_probe_logo" />
+            android:src="@drawable/alien_probe_logo"
+            android:layout_centerHorizontal="true" />
 
         <Button
-            android:id="@+id/startScanning"
+            android:id="@+id/startScanningButton"
             android:layout_width="205dp"
-            android:layout_height="77dp"
+            android:layout_height="75dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="105dp"
-            android:layout_marginBottom="297dp"
-            android:text="Start Scanning" />
+            android:layout_marginStart="100dp"
+            android:layout_marginBottom="294dp"
+            android:text="@string/textStartScanning"
+            android:layout_centerHorizontal="true"/>
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/wku_pts_logo"
             android:layout_width="197dp"
             android:layout_height="163dp"
             android:layout_alignParentStart="true"
@@ -36,6 +38,7 @@
             android:layout_marginBottom="3dp"
             android:src="@drawable/wku_pts_logo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

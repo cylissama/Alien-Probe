@@ -11,10 +11,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.alienprobe.ui.theme.AlienPROBETheme
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.widget.Button
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) // Inflating activity_main.xml layout
+
+        val buttonClick = findViewById<Button>(R.id.startScanningButton)
+        buttonClick.setOnClickListener {
+            val intent = Intent(this, ScannerActivity::class.java)
+            startActivity(intent)
+        }
     }
+
+
 }

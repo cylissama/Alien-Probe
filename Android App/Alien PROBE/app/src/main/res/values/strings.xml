@@ -1,3 +1,11 @@
 <resources>
+    <!-- App Name String -->
     <string name="app_name">Alien PROBE</string>
+
+    <!-- activity_main string list -->
+    <string name="textStartScanning">Start Scanning</string>
+
+    <!-- activity_scanner string list -->
+    <string name="textBack">Back</string>
+
 </resources>
