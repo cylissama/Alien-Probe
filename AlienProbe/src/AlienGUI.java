@@ -2,8 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -75,12 +81,16 @@ public class AlienGUI extends JFrame {
         JButton startButton = new JButton("Start");
         JButton stopButton = new JButton("Stop");
         JButton clearButton = new JButton("Clear");
+        JButton saveButton = new JButton("Save");
         JPanel buttonPanel = new JPanel();
 
         //add buttons to panel
         buttonPanel.add(startButton);
         buttonPanel.add(stopButton);
         buttonPanel.add(clearButton);
+        buttonPanel.add(saveButton);
+
+        saveButton.addActionListener(e -> saveReadsToUniqueFile());
 
         // Initialize the status label and set its initial text
         statusLabel = new JLabel("Standby");
@@ -139,6 +149,32 @@ public class AlienGUI extends JFrame {
 
         setVisible(true);
     }
+
+    private void saveReadsToUniqueFile() {
+        String directoryPath = "collected_data"; // Folder where you want to save the files
+        File directory = new File(directoryPath);
+        if (!directory.exists()) {
+            directory.mkdirs(); // Make the directory (including any necessary but nonexistent parent directories)
+        }
+
+        // Format the current date and time to use as a filename
+        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String fileName = "readsData_" + timeStamp + ".rtf";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(directoryPath, fileName)))) {
+            StringBuilder data = new StringBuilder();
+            for (int i = 0; i < listModel.size(); i++) {
+                data.append(listModel.get(i));
+                if (i < listModel.size() - 1) { // This checks if it's not the last element
+                    data.append(","); // Add a comma after each element except the last one
+                }
+            }
+            writer.write(String.valueOf(data));
+            System.out.println("Reads saved to file: " + fileName);
+        } catch (IOException ex) {
+            System.out.println("Error saving reads to file: " + ex.getMessage());
+        }
+    }
     public Connection databaseConnect(){
         String url = "jdbc:mysql://localhost:3306/alienbase";
         String username = "root";
@@ -171,3 +207,4 @@ public class AlienGUI extends JFrame {
         new AlienGUI(); // Create and display the GUI
     }
 }
+
