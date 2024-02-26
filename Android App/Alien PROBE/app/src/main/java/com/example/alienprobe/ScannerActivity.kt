@@ -10,7 +10,7 @@ class ScannerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner)
 
-        val buttonClick = findViewById<Button>(R.id.backButton)
+        val buttonClick = findViewById<Button>(R.id.btnViewMain)
         buttonClick.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
