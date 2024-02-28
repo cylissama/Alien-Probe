@@ -11,12 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/alien_probe_logo"
-            android:layout_width="match_parent"
-            android:layout_height="356dp"
+        <Button
+            android:id="@+id/btnViewScanner"
+            android:layout_width="205dp"
+            android:layout_height="75dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/alien_probe_logo" />
+            android:layout_marginStart="104dp"
+            android:layout_marginBottom="111dp"
+            android:text="@string/scan_button_home" />
 
         <Button
             android:id="@+id/btnViewScanner"
@@ -25,9 +29,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="100dp"
-            android:layout_marginBottom="294dp"
-            android:text="@string/textStartScanning" />
+            android:layout_marginStart="106dp"
+            android:layout_marginBottom="203dp"
+            android:text="@string/setup_button_home" />
 
         <ImageView
             android:id="@+id/wkulong"
@@ -37,6 +41,26 @@
             android:layout_centerInParent="true"
             android:src="@drawable/wkulong"
             tools:src="@drawable/wkulong" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="154dp"
+            android:layout_height="68dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="121dp"
+            android:text="@string/main_activity_text" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="78dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/alien_probe_logo" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
