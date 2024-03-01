@@ -23,7 +23,7 @@
             android:text="@string/scan_button_home" />
 
         <Button
-            android:id="@+id/btnViewScanner"
+            android:id="@+id/btnViewSetup"
             android:layout_width="205dp"
             android:layout_height="75dp"
             android:layout_alignParentStart="true"

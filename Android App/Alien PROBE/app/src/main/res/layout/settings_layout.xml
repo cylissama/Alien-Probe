@@ -4,55 +4,55 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="153dp"
-        android:layout_height="32dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="135dp"
-        android:layout_marginTop="129dp"
-        android:layout_weight="1"
-        android:text="@string/reader_ip_text" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="153dp"
-        android:layout_height="32dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="131dp"
-        android:layout_marginTop="198dp"
-        android:layout_weight="1"
-        android:text="@string/reader_port_text" />
-
-    <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/readerIPText"
         android:layout_width="153dp"
         android:layout_height="32dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="130dp"
-        android:layout_marginTop="269dp"
+        android:layout_marginTop="112dp"
+        android:layout_weight="1"
+        android:text="@string/reader_ip_text" />
+
+    <TextView
+        android:id="@+id/readerPortText"
+        android:layout_width="153dp"
+        android:layout_height="32dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="129dp"
+        android:layout_marginTop="192dp"
+        android:layout_weight="1"
+        android:text="@string/reader_port_text" />
+
+    <TextView
+        android:id="@+id/readerUsernameText"
+        android:layout_width="153dp"
+        android:layout_height="32dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="259dp"
         android:layout_weight="1"
         android:text="@string/reader_username_text" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/readerPasswordText"
         android:layout_width="153dp"
         android:layout_height="32dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="339dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="341dp"
         android:layout_weight="1"
         android:text="@string/reader_password_text" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/setupTopText"
         android:layout_width="296dp"
         android:layout_height="63dp"
         android:layout_alignParentStart="true"
@@ -71,24 +71,69 @@
         android:layout_marginBottom="241dp">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioNetwork"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/network_radio_text" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioBluetooth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/blueooth_radio_text" />
     </RadioGroup>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="93dp"
         android:text="@string/save_button_text" />
+
+    <EditText
+        android:id="@+id/readerIPInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="141dp"
+        android:layout_marginEnd="90dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/readerPortInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="218dp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/readerUsernameInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="290dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/readerPasswordInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="310dp"
+        android:ems="10"
+        android:inputType="textPassword" />
 </RelativeLayout>
