@@ -12,12 +12,13 @@ class ScannerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner)
 
-        val buttonClick = findViewById<Button>(R.id.btnViewMain)
+        val buttonClick = findViewById<Button>(R.id.btnViewScanToMain)
         buttonClick.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
+        /*
         //start scanning for tags
         val buttonClick = findViewById<Button>(R.id.)
         buttonClick.setOnClickListener {
@@ -27,6 +28,7 @@ class ScannerActivity : AppCompatActivity() {
             //???
             val tagGetter = AlienGetTagList();
         }
+        */
 
         //stop scanning for tags
 

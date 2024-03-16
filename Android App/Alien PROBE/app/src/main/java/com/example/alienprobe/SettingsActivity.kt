@@ -1,8 +1,10 @@
 package com.example.alienprobe
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import com.example.alienprobe.databinding.SettingsLayoutBinding
 
 class SettingsActivity : AppCompatActivity() {
@@ -12,9 +14,18 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.settings_layout)
+
         // Initialize binding
         binding = SettingsLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //back button to main
+        val buttonClick = findViewById<Button>(R.id.btnViewSettingsToMain)
+        buttonClick.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         // Set up click listener for the save button
         binding.saveButton.setOnClickListener {
