@@ -5,8 +5,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import com.example.alienprobe.databinding.SettingsLayoutBinding
 
+var ip: String = "null"
+var port: Int = 0// Default to 0 if conversion fails
+var username: String = "username"
+var password: String = "password"
 class SettingsActivity : AppCompatActivity() {
 
     // Lateinit var for binding
@@ -20,6 +25,8 @@ class SettingsActivity : AppCompatActivity() {
         binding = SettingsLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        loadPreferences()
+
         //back button to main
         val buttonClick = findViewById<Button>(R.id.btnViewSettingsToMain)
         buttonClick.setOnClickListener {
@@ -27,27 +34,51 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Set up click listener for the save button
         binding.saveButton.setOnClickListener {
-            savePreferences()
+            savePreferences(
+                binding.readerUsernameInput.text.toString(),
+                binding.readerPasswordInput.text.toString(),
+                binding.readerIPInput.text.toString(),
+                binding.readerPortInput.text.toString().toIntOrNull() ?: 0
+            )
+            Toast.makeText(this,"Preferences Saved",Toast.LENGTH_SHORT).show()
+            loadPreferences() // Load and display the updated preferences
         }
+
     }
 
-    private fun savePreferences() {
-        // Get user inputs
-        val ip = binding.readerIPInput.text.toString()
-        val port = binding.readerPortInput.text.toString().toIntOrNull() ?: 0 // Default to 0 if conversion fails
-        val username = binding.readerUsernameInput.text.toString()
-        val password = binding.readerPasswordInput.text.toString()
+    private fun savePreferences(
+        username: String,
+        password: String,
+        ip: String,
+        port: Int,
+        )
+    {
 
         // Open Shared Preferences editor to save values
         val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
-        with(sharedPreferences.edit()) {
-            putString("IP", ip)
-            putInt("Port", port)
-            putString("Username", username)
-            putString("Password", password)
-            apply() // Apply changes asynchronously
-        }
+        val editor = sharedPreferences.edit()
+
+        editor.putString("Username",username)
+        editor.putString("Password",password)
+        editor.putString("IP",ip)
+        editor.putInt("Port",port)
+
+        editor.apply()
     }
+    private fun loadPreferences() {
+        val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+
+        // Fetch the saved preferences
+        val savedUsername = sharedPreferences.getString("Username", "DefaultUsername")
+        val savedPassword = sharedPreferences.getString("Password", "DefaultPassword")
+        val savedIP = sharedPreferences.getString("IP", "DefaultIP")
+        val savedPort = sharedPreferences.getInt("Port", 0)
+
+        binding.displayUsername.text = savedUsername
+        binding.displayPassword.text = savedPassword
+        binding.displayIP.text = savedIP
+        binding.displayPort.text = savedPort.toString()
+    }
+
 }

@@ -17,8 +17,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) // Inflating activity_main.xml layout
 
-        sharedPreferences=this.getSharedPreferences("userPreferences", Context.MODE_PRIVATE)
-
         val buttonClick = findViewById<Button>(R.id.btnViewScanner)
         buttonClick.setOnClickListener {
             val intent = Intent(this, ScannerActivity::class.java)
@@ -30,10 +28,5 @@ class MainActivity : ComponentActivity() {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
-
-        //set this up to where it is bound to textbox input
-        val appPreferences = AppPreferences(ip = "192.168.1.1", port = 8080, username = "user", password = "pass")
-        val preferencesManager = PreferencesManager(this) // 'context' is your Activity or Application context
-        preferencesManager.savePreferences(appPreferences)
     }
 }

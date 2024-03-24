@@ -127,4 +127,44 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:text="@string/textBack" />
+
+    <TextView
+        android:id="@+id/displayIP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="93dp"
+        android:layout_marginEnd="32dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/displayPort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="174dp"
+        android:layout_marginEnd="28dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/displayUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="255dp"
+        android:layout_marginEnd="28dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/displayPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="334dp"
+        android:layout_marginEnd="27dp"
+        android:text="TextView" />
 </RelativeLayout>
