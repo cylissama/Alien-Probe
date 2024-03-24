@@ -8,7 +8,7 @@ import com.alien.enterpriseRFID.reader.AlienReaderTimeoutException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class AlienGetTagList {
+public class AlienScanner {
 
     public String readerIP;
     public String readerPort;
