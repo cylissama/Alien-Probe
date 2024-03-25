@@ -15,9 +15,8 @@ class ScannerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner)
 
-        //setup the reader
+        //create a reader
         var reader = AlienScanner(this)
-        Toast.makeText(this, reader.respond(), Toast.LENGTH_SHORT).show()
 
         val buttonClick = findViewById<Button>(R.id.btnViewScanToMain)
         buttonClick.setOnClickListener {
@@ -33,24 +32,28 @@ class ScannerActivity : AppCompatActivity() {
             }
         }
 
-        // Get reference to the LinearLayout inside ScrollView
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
-        tagList?.let {
-            for (tag in it) {
+        val saveClick = findViewById<Button>(R.id.btnScannerSave)
+        saveClick.setOnClickListener {
+            reader.GetTagList()
+
+            tagList?.let {
+                for (tag in it) {
+                    val textView = TextView(this).apply {
+                        text = tag
+                        // Optional: add styling here if needed
+                    }
+                    linearLayout.addView(textView)
+                }
+            } ?: run {
+                // If tagList is null or empty, display a placeholder or error message
                 val textView = TextView(this).apply {
-                    text = tag
+                    text = "No tags found."
                     // Optional: add styling here if needed
                 }
                 linearLayout.addView(textView)
             }
-        } ?: run {
-            // If tagList is null or empty, display a placeholder or error message
-            val textView = TextView(this).apply {
-                text = "No tags found."
-                // Optional: add styling here if needed
-            }
-            linearLayout.addView(textView)
         }
 
     }

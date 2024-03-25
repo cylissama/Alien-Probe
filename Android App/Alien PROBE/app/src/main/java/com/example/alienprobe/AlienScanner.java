@@ -20,7 +20,6 @@ public class AlienScanner {
 
     public AlienScanner(Context context) {loadPreferences(context);}
     public void openReader(){
-        System.out.println("attempting open...");
         try {
             reader.setConnection("161.6.141.148", 23); // Replace with your reader's IP address
             reader.setUsername("alien"); // Add your reader's username
@@ -41,6 +40,7 @@ public class AlienScanner {
             String commandOutput = reader.doReaderCommand("t");
             List<String> outputLines = Arrays.stream(commandOutput.split("\\r?\\n"))
                     .collect(Collectors.toList());
+            System.out.println(outputLines);
             return outputLines;
         } catch (Exception e) {
             System.out.println(e);
