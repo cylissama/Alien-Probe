@@ -57,4 +57,25 @@ class ScannerActivity : AppCompatActivity() {
         }
 
     }
+    fun updateTagList(tagList: List<String>) {
+        val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
+        linearLayout.removeAllViews() // Clear previous views
+        for (tag in tagList) {
+            val textView = TextView(this).apply {
+                text = tag
+                // Optional: add styling here
+            }
+            linearLayout.addView(textView)
+        }
+
+        if (tagList.isEmpty()) {
+            // If tagList is empty, display a placeholder or error message
+            val textView = TextView(this).apply {
+                text = "No tags found."
+                // Optional: add styling here
+            }
+            linearLayout.addView(textView)
+        }
+    }
+
 }
