@@ -1,8 +1,5 @@
 package com.example.alienprobe
 
-import AppPreferences
-import PreferencesManager
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import android.content.Intent
@@ -11,8 +8,6 @@ import android.widget.Button
 
 class MainActivity : ComponentActivity() {
 
-    //setup shared prefs for the IP/Port/User/Pass
-    private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) // Inflating activity_main.xml layout

@@ -8,10 +8,6 @@ import android.widget.Button
 import android.widget.Toast
 import com.example.alienprobe.databinding.SettingsLayoutBinding
 
-var ip: String = "null"
-var port: Int = 0// Default to 0 if conversion fails
-var username: String = "username"
-var password: String = "password"
 class SettingsActivity : AppCompatActivity() {
 
     // Lateinit var for binding
@@ -34,6 +30,7 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //button listener for save
         binding.saveButton.setOnClickListener {
             savePreferences(
                 binding.readerUsernameInput.text.toString(),
@@ -44,7 +41,6 @@ class SettingsActivity : AppCompatActivity() {
             Toast.makeText(this,"Preferences Saved",Toast.LENGTH_SHORT).show()
             loadPreferences() // Load and display the updated preferences
         }
-
     }
 
     private fun savePreferences(
@@ -54,7 +50,6 @@ class SettingsActivity : AppCompatActivity() {
         port: Int,
         )
     {
-
         // Open Shared Preferences editor to save values
         val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()

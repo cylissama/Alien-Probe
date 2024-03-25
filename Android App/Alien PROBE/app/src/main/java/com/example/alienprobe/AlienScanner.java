@@ -12,28 +12,23 @@ import java.util.stream.Collectors;
 
 //PASS CONTEXT WHEN CREATING THIS BY USING 'this'
 public class AlienScanner {
-
     public static String readerIP;
     public static Integer readerPort;
     public static String readerUserName;
     public static String readerPassword;
     public static AlienClass1Reader reader = new AlienClass1Reader();
 
-    public AlienScanner(Context context) {
-        loadPreferences(context);
-    }
+    public AlienScanner(Context context) {loadPreferences(context);}
     public void openReader(){
         try {
-            reader.setConnection(readerIP, readerPort); // Replace with your reader's IP address
-            reader.setUsername(readerUserName); // Add your reader's username
-            reader.setPassword(readerPassword);
+
+            reader.setConnection("161.6.141.148", 23); // Replace with your reader's IP address
+            reader.setUsername("alien"); // Add your reader's username
+            reader.setPassword("password");
             reader.open();
             System.out.println("Connection established with RFID reader.");
-        } catch (AlienReaderNotValidException e) {
-            throw new RuntimeException(e);
-        } catch (AlienReaderTimeoutException e) {
-            throw new RuntimeException(e);
-        } catch (AlienReaderConnectionException e) {
+        } catch (AlienReaderNotValidException | AlienReaderTimeoutException |
+                 AlienReaderConnectionException e) {
             throw new RuntimeException(e);
         }
     }
@@ -42,8 +37,7 @@ public class AlienScanner {
         System.out.println("Connection Closed.");
 
     }
-
-    public static List<String> GetTagList(){
+    public List<String> GetTagList(){
         try {
             String commandOutput = reader.doReaderCommand("t");
             List<String> outputLines = Arrays.stream(commandOutput.split("\\r?\\n"))
@@ -70,6 +64,10 @@ public class AlienScanner {
         reader.setConnection(this.readerIP, this.readerPort);
         reader.setUsername(this.readerUserName);
         reader.setPassword(this.readerPassword);
+    }
+
+    public String respond(){
+        return "Hello";
     }
 
     public static void main(String[] args) {
