@@ -8,8 +8,6 @@ import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 
-//import RFIDTag class
-
 class ScannerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +29,7 @@ class ScannerActivity : AppCompatActivity() {
             linearLayout.addView(textView)
         }
 
+        /*
         //start scanning for tags
         val isScanner = findViewById<ToggleButton>(R.id.toggleScanner)
         buttonClick.setOnClickListener {
@@ -58,6 +57,7 @@ class ScannerActivity : AppCompatActivity() {
             }
 
         }
+        */
 
     }
 }
