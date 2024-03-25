@@ -80,5 +80,4 @@ class SettingsActivity : AppCompatActivity() {
         binding.displayIP.text = savedIP
         binding.displayPort.text = savedPort.toString()
     }
-
 }
