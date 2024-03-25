@@ -20,16 +20,15 @@ public class AlienScanner {
 
     public AlienScanner(Context context) {loadPreferences(context);}
     public void openReader(){
+        System.out.println("attempting open...");
         try {
-
             reader.setConnection("161.6.141.148", 23); // Replace with your reader's IP address
             reader.setUsername("alien"); // Add your reader's username
             reader.setPassword("password");
             reader.open();
             System.out.println("Connection established with RFID reader.");
-        } catch (AlienReaderNotValidException | AlienReaderTimeoutException |
-                 AlienReaderConnectionException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            System.out.println("error");
         }
     }
     public void closeReader(){
