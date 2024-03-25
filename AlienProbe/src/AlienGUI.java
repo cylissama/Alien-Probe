@@ -26,7 +26,7 @@ public class AlienGUI extends JFrame {
 
     public AlienGUI() {
 
-        tagGetter.openReader();
+        //tagGetter.openReader();
 
         setTitle("Alien P.R.O.B.E"); //Precision RFID Operational Bridge for Efficiency
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
