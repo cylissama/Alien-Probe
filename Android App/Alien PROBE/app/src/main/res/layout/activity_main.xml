@@ -9,7 +9,7 @@
     android:gravity="center"
     android:orientation="horizontal">
 
-    <ImageView
+   <!-- <ImageView
         android:id="@+id/alien_probe_logo"
         android:layout_width="match_parent"
         android:layout_height="320dp"
@@ -18,6 +18,7 @@
         app:layout_constraintBottom_toTopOf="@id/guideline_center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+   -->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_center"
@@ -26,41 +27,45 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="154dp"
-        android:layout_height="68dp"
-        android:text="@string/main_activity_text"
-        app:layout_constraintTop_toTopOf="@id/guideline_center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+ <TextView
+     android:id="@+id/textView"
+     android:layout_width="96dp"
+     android:layout_height="30dp"
+     android:layout_marginTop="336dp"
+     android:text="@string/main_activity_text"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.498"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="@id/guideline_center" />
 
-    <ImageView
+ <ImageView
         android:id="@+id/wkulong"
         android:layout_width="253dp"
         android:layout_height="98dp"
         android:src="@drawable/wkulong"
-        app:layout_constraintTop_toBottomOf="@id/alien_probe_logo"
+        app:layout_constraintTop_toBottomOf="@id/wkulong"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/wkulong" />
 
-    <Button
-        android:id="@+id/btnViewSetup"
-        android:layout_width="205dp"
-        android:layout_height="75dp"
-        android:text="@string/setup_button_home"
-        app:layout_constraintTop_toBottomOf="@id/wkulong"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+ <Button
+     android:id="@+id/btnViewSetup"
+     android:layout_width="205dp"
+     android:layout_height="75dp"
+     android:layout_marginTop="180dp"
+     android:text="@string/setup_button_home"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/wkulong" />
 
-    <Button
-        android:id="@+id/btnViewScanner"
-        android:layout_width="205dp"
-        android:layout_height="75dp"
-        android:text="@string/scan_button_home"
-        app:layout_constraintTop_toBottomOf="@id/btnViewSetup"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+ <Button
+     android:id="@+id/btnViewScanner"
+     android:layout_width="205dp"
+     android:layout_height="75dp"
+     android:layout_marginTop="28dp"
+     android:text="@string/scan_button_home"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/btnViewSetup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

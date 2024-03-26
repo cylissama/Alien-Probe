@@ -4,21 +4,24 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
-import com.example.alienprobe.databinding.SettingsLayoutBinding
+import com.example.alienprobe.databinding.SettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
 
     // Lateinit var for binding
-    private lateinit var binding: SettingsLayoutBinding
+    private lateinit var binding: SettingsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.settings_layout)
+        setContentView(R.layout.settings)
 
         // Initialize binding
-        binding = SettingsLayoutBinding.inflate(layoutInflater)
+        binding = SettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         loadPreferences()
@@ -30,15 +33,19 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //button listener for save
+        //NEED TO CHANGE THIS TO ONLY SAVE THE MODIFIED FIELDS//
         binding.saveButton.setOnClickListener {
+
             savePreferences(
                 binding.readerUsernameInput.text.toString(),
                 binding.readerPasswordInput.text.toString(),
                 binding.readerIPInput.text.toString(),
                 binding.readerPortInput.text.toString().toIntOrNull() ?: 0
             )
-            Toast.makeText(this,"Preferences Saved",Toast.LENGTH_SHORT).show()
+            val toast = Toast.makeText(applicationContext, "Preferences Saved", Toast.LENGTH_LONG)
+            toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 0)
+            toast.show()
+
             loadPreferences() // Load and display the updated preferences
         }
     }
@@ -70,9 +77,13 @@ class SettingsActivity : AppCompatActivity() {
         val savedIP = sharedPreferences.getString("IP", "DefaultIP")
         val savedPort = sharedPreferences.getInt("Port", 0)
 
-        binding.displayUsername.text = savedUsername
-        binding.displayPassword.text = savedPassword
-        binding.displayIP.text = savedIP
-        binding.displayPort.text = savedPort.toString()
+        val readerIPInput = findViewById<TextView>(R.id.readerIPInput)
+        readerIPInput.hint = savedIP
+        val readerPortInput = findViewById<TextView>(R.id.readerPortInput)
+        readerPortInput.hint = savedPort.toString()
+        val readerUsernameInput = findViewById<TextView>(R.id.readerUsernameInput)
+        readerUsernameInput.hint = savedUsername
+        val readerPasswordInput = findViewById<TextView>(R.id.readerPasswordInput)
+        readerPasswordInput.hint = savedPassword
     }
 }
