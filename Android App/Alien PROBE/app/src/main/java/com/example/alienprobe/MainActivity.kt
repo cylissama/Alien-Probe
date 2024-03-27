@@ -1,21 +1,15 @@
 package com.example.alienprobe
 
-import AppPreferences
-import PreferencesManager
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import android.content.Intent
-import android.content.SharedPreferences
 import android.widget.Button
 
 class MainActivity : ComponentActivity() {
 
-    //setup shared prefs for the IP/Port/User/Pass
-    private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main) // Inflating activity_main.xml layout
+        setContentView(R.layout.main) // Inflating activity_main.xml layout
 
         val buttonClick = findViewById<Button>(R.id.btnViewScanner)
         buttonClick.setOnClickListener {
@@ -28,5 +22,12 @@ class MainActivity : ComponentActivity() {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
+
+        val aboutButton = findViewById<Button>(R.id.aboutButton)
+        aboutButton.setOnClickListener {
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 }

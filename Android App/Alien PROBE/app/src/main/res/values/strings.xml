@@ -2,7 +2,7 @@
     <!-- App Name String -->
     <string name="app_name">Alien PROBE</string>
 
-    <!-- activity_main string list -->
+    <!-- Main string list -->
     <string name="textStartScanning">Start Scanning</string>
 
     <!-- back button text -->
@@ -11,7 +11,7 @@
     <string name="main_activity_text">Alien P.R.O.B.E</string>
     <string name="scan_button_home">Scan</string>
 
-    <!-- Setup Page -->
+    <!-- Settings -->
     <string name="setup_button_home">Setup</string>
 
     <string name="reader_ip_text">Reader IP</string>
@@ -30,13 +30,17 @@
     <string name="bluetooth_radio_text">Bluetooth</string>
 
 
+    <!-- Scanner -->
     <string name="scan_operation_activity_text">Scan/Operation</string>
     <string name="reads_box_text">RFID Reads</string>
     <string name="stop_button_text">Stop</string>
     <string name="save_button_text">Save</string>
     <string name="clear_button_text">Clear</string>
 
-
+    <!-- About -->
+    <string name="how_to_text">How to use this app</string>
+    <string name="explanation_text">First go into the setup page to set the IP, Port, Username, and Password that the Alien reader current has set.</string>
+    <string name="designed_by_text">Designed by: Cy Dixon, Nicholas Johnson, Alex Godsey, and Micheal Lynch</string>
 
 
 </resources>

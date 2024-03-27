@@ -4,36 +4,33 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
-import com.example.alienprobe.databinding.SettingsLayoutBinding
+import com.example.alienprobe.databinding.SettingsBinding
 
-var ip: String = "null"
-var port: Int = 0// Default to 0 if conversion fails
-var username: String = "username"
-var password: String = "password"
 class SettingsActivity : AppCompatActivity() {
 
     // Lateinit var for binding
-    private lateinit var binding: SettingsLayoutBinding
+    private lateinit var binding: SettingsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.settings_layout)
+        setContentView(R.layout.settings)
 
         // Initialize binding
-        binding = SettingsLayoutBinding.inflate(layoutInflater)
+        binding = SettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         loadPreferences()
-
         //back button to main
         val buttonClick = findViewById<Button>(R.id.btnViewSettingsToMain)
         buttonClick.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-
+        //NEED TO CHANGE THIS TO ONLY SAVE THE MODIFIED FIELDS//
         binding.saveButton.setOnClickListener {
             savePreferences(
                 binding.readerUsernameInput.text.toString(),
@@ -41,12 +38,12 @@ class SettingsActivity : AppCompatActivity() {
                 binding.readerIPInput.text.toString(),
                 binding.readerPortInput.text.toString().toIntOrNull() ?: 0
             )
-            Toast.makeText(this,"Preferences Saved",Toast.LENGTH_SHORT).show()
-            loadPreferences() // Load and display the updated preferences
+            val toast = Toast.makeText(applicationContext, "Preferences Saved", Toast.LENGTH_LONG)
+            toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 0)
+            toast.show()
+            loadPreferences()
         }
-
     }
-
     private fun savePreferences(
         username: String,
         password: String,
@@ -54,31 +51,28 @@ class SettingsActivity : AppCompatActivity() {
         port: Int,
         )
     {
-
         // Open Shared Preferences editor to save values
         val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-
         editor.putString("Username",username)
         editor.putString("Password",password)
         editor.putString("IP",ip)
         editor.putInt("Port",port)
-
         editor.apply()
     }
     private fun loadPreferences() {
         val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
-
-        // Fetch the saved preferences
         val savedUsername = sharedPreferences.getString("Username", "DefaultUsername")
         val savedPassword = sharedPreferences.getString("Password", "DefaultPassword")
         val savedIP = sharedPreferences.getString("IP", "DefaultIP")
         val savedPort = sharedPreferences.getInt("Port", 0)
-
-        binding.displayUsername.text = savedUsername
-        binding.displayPassword.text = savedPassword
-        binding.displayIP.text = savedIP
-        binding.displayPort.text = savedPort.toString()
+        val readerIPInput = findViewById<TextView>(R.id.readerIPInput)
+        readerIPInput.hint = savedIP
+        val readerPortInput = findViewById<TextView>(R.id.readerPortInput)
+        readerPortInput.hint = savedPort.toString()
+        val readerUsernameInput = findViewById<TextView>(R.id.readerUsernameInput)
+        readerUsernameInput.hint = savedUsername
+        val readerPasswordInput = findViewById<TextView>(R.id.readerPasswordInput)
+        readerPasswordInput.hint = savedPassword
     }
-
 }
