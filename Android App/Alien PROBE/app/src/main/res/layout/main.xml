@@ -9,16 +9,17 @@
     android:gravity="center"
     android:orientation="horizontal">
 
-   <!-- <ImageView
+   <ImageView
         android:id="@+id/alien_probe_logo"
         android:layout_width="match_parent"
         android:layout_height="320dp"
+        android:layout_marginTop="125dp"
         android:src="@drawable/alien_probe_logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/guideline_center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-   -->
+        app:layout_constraintEnd_toEndOf="@id/wkulong"/>
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_center"
@@ -42,22 +43,22 @@
      android:id="@+id/wkulong"
      android:layout_width="253dp"
      android:layout_height="98dp"
+     android:layout_marginTop="50dp"
      android:src="@drawable/wkulong"
-     app:layout_constraintBottom_toTopOf="@id/wkulong"
-     app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintTop_toBottomOf="@id/wkulong"
-     app:layout_constraintVertical_bias="0.0" />
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintBottom_toTopOf="@id/wkulong" />
 
  <Button
      android:id="@+id/btnViewSetup"
      android:layout_width="205dp"
      android:layout_height="75dp"
-     android:layout_marginTop="180dp"
+     android:layout_marginTop="50dp"
      android:text="@string/setup_button_home"
      app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintStart_toStartOf="parent"
-     app:layout_constraintTop_toBottomOf="@id/wkulong" />
+     app:layout_constraintTop_toBottomOf="@id/alien_probe_logo" />
 
  <Button
      android:id="@+id/btnViewScanner"

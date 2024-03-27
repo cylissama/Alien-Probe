@@ -17,6 +17,7 @@ class ScannerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.scanner)
+
         var reader = AlienScanner(this)
 
         //back button
@@ -25,25 +26,25 @@ class ScannerActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
+
         //clear button
         val clearClick = findViewById<Button>(R.id.btnScannerClear)
         clearClick.setOnClickListener {
-            try {
-                reader.openReader()
-            } catch (e: Exception) {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-            }
+            //clear tag list
+            tagList.clear()
+            linearLayout.removeAllViews()
         }
-
-        val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
         //toggle button
         val toggleOnOff = findViewById<ToggleButton>(R.id.toggleScanner)
         toggleOnOff.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
+            if(isChecked) {
                 println("Switch On")
             } else {
                 println("END OF THING")
+                //close connection
             }
         }
         //save button
