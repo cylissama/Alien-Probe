@@ -54,17 +54,17 @@
      android:id="@+id/btnViewSetup"
      android:layout_width="205dp"
      android:layout_height="75dp"
-     android:layout_marginTop="50dp"
+     android:layout_marginTop="25dp"
      android:text="@string/setup_button_home"
      app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintStart_toStartOf="parent"
-     app:layout_constraintTop_toBottomOf="@id/alien_probe_logo" />
+     app:layout_constraintTop_toBottomOf="@id/guideline_center" />
 
  <Button
      android:id="@+id/btnViewScanner"
      android:layout_width="205dp"
      android:layout_height="75dp"
-     android:layout_marginTop="28dp"
+     android:layout_marginTop="25dp"
      android:text="@string/scan_button_home"
      app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintStart_toStartOf="parent"
@@ -74,10 +74,10 @@
      android:id="@+id/aboutButton"
      android:layout_width="205dp"
      android:layout_height="75dp"
-     android:layout_marginTop="132dp"
+     android:layout_marginTop="25dp"
      android:text="About"
      app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintStart_toStartOf="parent"
-     app:layout_constraintTop_toBottomOf="@id/btnViewSetup" />
+     app:layout_constraintTop_toBottomOf="@id/btnViewScanner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

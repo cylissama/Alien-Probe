@@ -71,7 +71,7 @@ public class AlienScanner {
 
                         outputTags.add(tag);
                     }
-
+                    reader.close();
                     System.out.println("connection closed");
                     socket.close();
                 } catch (Exception e) {
@@ -80,6 +80,7 @@ public class AlienScanner {
                 }
             }
         }).start();
+        System.out.println("return");
         return outputTags;
     }
 

@@ -40,7 +40,7 @@
     <!-- About -->
     <string name="how_to_text">How to use this app</string>
     <string name="explanation_text">First go into the setup page to set the IP, Port, Username, and Password that the Alien reader current has set.</string>
-    <string name="designed_by_text">Designed by: Cy Dixon, Nick Johnson, Alex Godsey, Micheal Lynch</string>
+    <string name="designed_by_text">Designed by: Cy Dixon, Nicholas Johnson, Alex Godsey, and Micheal Lynch</string>
 
 
 </resources>
