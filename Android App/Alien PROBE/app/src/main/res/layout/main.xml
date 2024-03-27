@@ -39,14 +39,15 @@
      app:layout_constraintTop_toTopOf="@id/guideline_center" />
 
  <ImageView
-        android:id="@+id/wkulong"
-        android:layout_width="253dp"
-        android:layout_height="98dp"
-        android:src="@drawable/wkulong"
-        app:layout_constraintTop_toBottomOf="@id/wkulong"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/wkulong" />
+     android:id="@+id/wkulong"
+     android:layout_width="253dp"
+     android:layout_height="98dp"
+     android:src="@drawable/wkulong"
+     app:layout_constraintBottom_toTopOf="@id/wkulong"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/wkulong"
+     app:layout_constraintVertical_bias="0.0" />
 
  <Button
      android:id="@+id/btnViewSetup"
