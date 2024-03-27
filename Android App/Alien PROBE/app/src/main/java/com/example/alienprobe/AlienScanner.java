@@ -26,13 +26,13 @@ public class AlienScanner {
 
     public AlienScanner(Context context) {
         loadPreferences(context);
-        reader.setConnection("161.6.141.148", 23); // Replace with your reader's IP address
+        reader.setConnection("161.6.219.3", 23); // Replace with your reader's IP address
         reader.setUsername("alien"); // Add your reader's username
         reader.setPassword("password");
     }
     public void openReader(){
         try {
-            reader.setConnection("161.6.141.148", 23); // Replace with your reader's IP address
+            reader.setConnection("161.6.219.3", 23); // Replace with your reader's IP address
             reader.setUsername("alien"); // Add your reader's username
             reader.setPassword("password");
             reader.open();
@@ -46,20 +46,32 @@ public class AlienScanner {
         System.out.println("Connection Closed.");
 
     }
-    List<String> outputLines;
-    public List<String> GetTagList(){
+    public List<RFIDTag> GetTagList() {
+        List<RFIDTag> outputTags = new ArrayList<>(); // Initialize list to store RFIDTag objects
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    Socket socket = new Socket("161.6.141.148", 23);
+                    Socket socket = new Socket("161.6.219.3", 23);
+                    reader.setUsername("alien"); // Add your reader's username
+                    reader.setPassword("password");
+                    reader.open();
                     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                     BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
                     String commandOutput = reader.doReaderCommand("t");
+
+                    System.out.println(commandOutput);
                     List<String> outputLines = Arrays.stream(commandOutput.split("\\r?\\n"))
                             .collect(Collectors.toList());
-                    System.out.println(outputLines);
+
+                    // Parse outputLines and create RFIDTag objects
+                    for (String line : outputLines) {
+                        // Assuming each line represents an RFID tag
+                        RFIDTag tag = new RFIDTag(line); // Replace null with geolocation if available
+
+                        outputTags.add(tag);
+                    }
 
                     socket.close();
                 } catch (Exception e) {
@@ -68,8 +80,7 @@ public class AlienScanner {
                 }
             }
         }).start();
-
-        return outputLines;
+        return outputTags;
     }
 
 

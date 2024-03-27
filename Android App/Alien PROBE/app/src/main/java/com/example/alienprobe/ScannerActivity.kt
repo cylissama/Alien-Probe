@@ -3,13 +3,16 @@ package com.example.alienprobe
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ToggleButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
 
 //import RFIDTag class
-var tagList: List<String>? = null
+var tagList: MutableList<RFIDTag> = mutableListOf()
+
 class ScannerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +26,7 @@ class ScannerActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
         val clearClick = findViewById<Button>(R.id.btnScannerClear)
         clearClick.setOnClickListener {
             try {
@@ -34,23 +38,47 @@ class ScannerActivity : AppCompatActivity() {
 
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
+        val toggleOnOff = findViewById<ToggleButton>(R.id.toggleScanner)
+        toggleOnOff.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+
+            } else {
+                println("END OF THING")
+            }
+        }
+
+
         val saveClick = findViewById<Button>(R.id.btnScannerSave)
         saveClick.setOnClickListener {
-            reader.GetTagList()
 
-            tagList?.let {
-                for (tag in it) {
+            tagList = reader.GetTagList()
+
+            Thread.sleep(1000)
+
+            println("YOO")
+
+            for(tag in tagList) {
+                println(tag.epc)
+                Log.d("TAG", tag.epc)
+            }
+
+            // Manually create an RFIDTag object for testing
+            val testTag = RFIDTag("TestEPC")
+
+            // Add the testTag to the tagList
+            //tagList.add(testTag)
+
+            if (tagList.isNotEmpty()) {
+                for (tag in tagList) {
                     val textView = TextView(this).apply {
-                        text = tag
-                        // Optional: add styling here if needed
+                        text = "EPC: ${tag.getEpc()}" // Accessing EPC data from RFIDTag object
                     }
                     linearLayout.addView(textView)
                 }
-            } ?: run {
-                // If tagList is null or empty, display a placeholder or error message
+            } else {
+                // If tagList is empty, display a placeholder or error message
                 val textView = TextView(this).apply {
                     text = "No tags found."
-                    // Optional: add styling here if needed
                 }
                 linearLayout.addView(textView)
             }

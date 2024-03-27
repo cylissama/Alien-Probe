@@ -4,13 +4,13 @@ public class RFIDTag {
     private String epc;
     //private String geolocation;
     // Constructor
-    public RFIDTag(String epc, String geolocation) {
+    public RFIDTag(String epc) {
         this.epc = epc;
         //this.geolocation = geolocation;
     }
     // Getter for EPC
     public String getEpc() {
-        return epc;
+        return this.epc;
     }
     // Setter for EPC
     public void setEpc(String epc) {
