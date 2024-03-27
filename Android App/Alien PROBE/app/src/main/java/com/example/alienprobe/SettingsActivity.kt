@@ -23,19 +23,15 @@ class SettingsActivity : AppCompatActivity() {
         // Initialize binding
         binding = SettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         loadPreferences()
-
         //back button to main
         val buttonClick = findViewById<Button>(R.id.btnViewSettingsToMain)
         buttonClick.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-
         //NEED TO CHANGE THIS TO ONLY SAVE THE MODIFIED FIELDS//
         binding.saveButton.setOnClickListener {
-
             savePreferences(
                 binding.readerUsernameInput.text.toString(),
                 binding.readerPasswordInput.text.toString(),
@@ -45,11 +41,9 @@ class SettingsActivity : AppCompatActivity() {
             val toast = Toast.makeText(applicationContext, "Preferences Saved", Toast.LENGTH_LONG)
             toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 0)
             toast.show()
-
-            loadPreferences() // Load and display the updated preferences
+            loadPreferences()
         }
     }
-
     private fun savePreferences(
         username: String,
         password: String,
@@ -60,23 +54,18 @@ class SettingsActivity : AppCompatActivity() {
         // Open Shared Preferences editor to save values
         val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-
         editor.putString("Username",username)
         editor.putString("Password",password)
         editor.putString("IP",ip)
         editor.putInt("Port",port)
-
         editor.apply()
     }
     private fun loadPreferences() {
         val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
-
-        // Fetch the saved preferences
         val savedUsername = sharedPreferences.getString("Username", "DefaultUsername")
         val savedPassword = sharedPreferences.getString("Password", "DefaultPassword")
         val savedIP = sharedPreferences.getString("IP", "DefaultIP")
         val savedPort = sharedPreferences.getInt("Port", 0)
-
         val readerIPInput = findViewById<TextView>(R.id.readerIPInput)
         readerIPInput.hint = savedIP
         val readerPortInput = findViewById<TextView>(R.id.readerPortInput)

@@ -16,17 +16,16 @@ var tagList: MutableList<RFIDTag> = mutableListOf()
 class ScannerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scanner)
-
-        //create a reader
+        setContentView(R.layout.scanner)
         var reader = AlienScanner(this)
 
+        //back button
         val buttonClick = findViewById<Button>(R.id.btnViewScanToMain)
         buttonClick.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-
+        //clear button
         val clearClick = findViewById<Button>(R.id.btnScannerClear)
         clearClick.setOnClickListener {
             try {
@@ -38,16 +37,16 @@ class ScannerActivity : AppCompatActivity() {
 
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
+        //toggle button
         val toggleOnOff = findViewById<ToggleButton>(R.id.toggleScanner)
         toggleOnOff.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-
+                println("Switch On")
             } else {
                 println("END OF THING")
             }
         }
-
-
+        //save button
         val saveClick = findViewById<Button>(R.id.btnScannerSave)
         saveClick.setOnClickListener {
 

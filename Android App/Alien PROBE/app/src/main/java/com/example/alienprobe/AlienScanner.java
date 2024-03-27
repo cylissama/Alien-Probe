@@ -52,12 +52,11 @@ public class AlienScanner {
             @Override
             public void run() {
                 try {
-                    Socket socket = new Socket("161.6.219.3", 23);
-                    reader.setUsername("alien"); // Add your reader's username
-                    reader.setPassword("password");
+                    Socket socket = new Socket(readerIP, readerPort);
+                    reader.setUsername(readerUserName); // Add your reader's username
+                    reader.setPassword(readerPassword);
                     reader.open();
-                    PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                    BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    System.out.println("connection opened");
 
                     String commandOutput = reader.doReaderCommand("t");
 
@@ -73,6 +72,7 @@ public class AlienScanner {
                         outputTags.add(tag);
                     }
 
+                    System.out.println("connection closed");
                     socket.close();
                 } catch (Exception e) {
                     System.out.println(e);
