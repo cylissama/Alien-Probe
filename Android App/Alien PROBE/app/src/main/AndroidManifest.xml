@@ -20,6 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight"
         tools:targetApi="30">
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false" />
+
         <profileable android:shell="true" />
 
         <activity

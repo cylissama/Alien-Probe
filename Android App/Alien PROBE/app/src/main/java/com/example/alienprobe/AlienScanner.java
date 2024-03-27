@@ -32,9 +32,9 @@ public class AlienScanner {
     }
     public void openReader(){
         try {
-            reader.setConnection("161.6.219.3", 23); // Replace with your reader's IP address
-            reader.setUsername("alien"); // Add your reader's username
-            reader.setPassword("password");
+            reader.setConnection(readerIP, readerPort); // Replace with your reader's IP address
+            reader.setUsername(readerUserName); // Add your reader's username
+            reader.setPassword(readerPassword);
             reader.open();
             System.out.println("Connection established with RFID reader.");
         } catch (Exception e) {
