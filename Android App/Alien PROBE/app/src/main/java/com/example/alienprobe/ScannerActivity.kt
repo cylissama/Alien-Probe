@@ -51,23 +51,23 @@ class ScannerActivity : AppCompatActivity() {
         val saveClick = findViewById<Button>(R.id.btnScannerSave)
         saveClick.setOnClickListener {
 
-            tagList = reader.GetTagList()
+            // Create a temporary list to hold tags temporarily while checking for duplicates
+            var tempTagList: MutableList<RFIDTag> = mutableListOf()
+            tempTagList = reader.GetTagList()
 
             Thread.sleep(1000)
 
-            println("YOO")
-
-            for(tag in tagList) {
-                println(tag.epc)
-                Log.d("TAG", tag.epc)
+            // Check for duplicates before adding to the main tagList
+            for (tempTag in tempTagList) {
+                if (!tagList.any { it.epc == tempTag.epc }) {
+                    tagList.add(tempTag)
+                }
             }
 
-            // Manually create an RFIDTag object for testing
-            val testTag = RFIDTag("TestEPC")
+            // Clear the layout
+            linearLayout.removeAllViews()
 
-            // Add the testTag to the tagList
-            //tagList.add(testTag)
-
+            //Add tags to linear layout
             if (tagList.isNotEmpty()) {
                 for (tag in tagList) {
                     val textView = TextView(this).apply {
@@ -83,8 +83,8 @@ class ScannerActivity : AppCompatActivity() {
                 linearLayout.addView(textView)
             }
         }
-
     }
+
     fun updateTagList(tagList: List<String>) {
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
         linearLayout.removeAllViews() // Clear previous views
@@ -105,5 +105,4 @@ class ScannerActivity : AppCompatActivity() {
             linearLayout.addView(textView)
         }
     }
-
 }

@@ -66,6 +66,7 @@ public class AlienScanner {
 
                     // Parse outputLines and create RFIDTag objects
                     for (String line : outputLines) {
+
                         // Assuming each line represents an RFID tag
                         RFIDTag tag = new RFIDTag(line); // Replace null with geolocation if available
 
