@@ -24,4 +24,4 @@ More details about the project, including technical specifications, system archi
 
 ## Acknowledgments
 
-Team members include Cy Dixon, Nick Johnson, Alex Godsney, and Micheal Lynch
+Team members include Cy Dixon, Nick Johnson, Alex Godsney, and Michael Lynch
