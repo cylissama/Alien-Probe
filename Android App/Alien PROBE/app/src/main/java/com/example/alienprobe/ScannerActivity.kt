@@ -2,16 +2,14 @@ package com.example.alienprobe
 
 import android.content.Intent
 import android.database.sqlite.SQLiteConstraintException
-import android.nfc.Tag
 import android.os.Bundle
-import android.provider.ContactsContract.Data
 import android.widget.Button
 import android.widget.ToggleButton
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import android.media.MediaPlayer
 
 //import RFIDTag class
 var tagList: MutableList<RFIDTag> = mutableListOf()
@@ -32,6 +30,12 @@ class ScannerActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+        //view tags button
+        val viewTags = findViewById<Button>(R.id.viewTagsButton)
+        viewTags.setOnClickListener {
+            val intent = Intent(this, ViewTagsActivity::class.java)
+            startActivity(intent)
+        }
         //clear button
         val clearClick = findViewById<Button>(R.id.btnScannerClear)
         clearClick.setOnClickListener {
@@ -48,8 +52,14 @@ class ScannerActivity : AppCompatActivity() {
             }
         }
         // getListButton
-        val getList = findViewById<Button>(R.id.btnScannerSave)
+        val getList = findViewById<Button>(R.id.getTagListButton)
         getList.setOnClickListener {
+
+            val mediaPlayer = MediaPlayer.create(this, R.raw.alien_blaster)
+            mediaPlayer.start() // Play the sound effect
+            mediaPlayer.setOnCompletionListener {
+                it.release() // Release the MediaPlayer resource once the sound is completed
+            }
 
             val dataBaseHelper: DataBaseHelper = DataBaseHelper(this)
 

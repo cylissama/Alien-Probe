@@ -2,7 +2,7 @@ package com.example.alienprobe;
 
 public class TagModel {
     private int id;
-    private static String epc;
+    private String epc;
 
     public TagModel(int id, String epc) {
         this.id = id;
@@ -25,7 +25,7 @@ public class TagModel {
         this.id = id;
     }
 
-    public static String getEPC() {
+    public String getEPC() {
         return epc;
     }
 

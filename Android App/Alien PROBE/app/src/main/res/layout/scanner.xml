@@ -24,7 +24,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/btnScannerSave"
+        android:id="@+id/getTagListButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -42,7 +42,7 @@
         android:text="@string/clear_button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toEndOf="@+id/btnScannerSave"
+        app:layout_constraintStart_toEndOf="@+id/getTagListButton"
         app:layout_constraintTop_toBottomOf="@+id/readsScrollView" />
 
     <TextView
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        app:layout_constraintEnd_toStartOf="@+id/btnScannerSave"
+        app:layout_constraintEnd_toStartOf="@+id/getTagListButton"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/readsScrollView" />
@@ -78,6 +78,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnScannerSave" />
+        app:layout_constraintTop_toBottomOf="@+id/getTagListButton" />
+
+    <Button
+        android:id="@+id/viewTagsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="@string/view_tags_text"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnViewScanToMain"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

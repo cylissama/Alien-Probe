@@ -5,6 +5,12 @@ import android.content.Context;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.Cursor;
+import android.nfc.Tag;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 import androidx.annotation.Nullable;
 
@@ -33,7 +39,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_EPC_STRING, TagModel.getEPC());
+        cv.put(COLUMN_EPC_STRING, tag.getEPC());
 
         try {
             // insertOrThrow() will throw SQLiteConstraintException if a UNIQUE constraint is violated
@@ -45,5 +51,39 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         } finally {
             db.close();
         }
+    }
+
+    public List<TagModel> getAllTags() {
+        List<TagModel> returnList = new ArrayList<>();
+
+        // Get data from the database
+        String queryString = "SELECT * FROM " + RFIDTAG_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        int i = 0;
+        if (cursor.moveToFirst()) {
+            // Loop through the cursor (result set) and create new TagModel objects. Put them into the return list.
+            do {
+                int tagID = cursor.getInt(0);
+                System.out.println(tagID);
+                String epcString = cursor.getString(1);
+                System.out.println(epcString);
+
+                TagModel tmpTag = new TagModel(tagID, epcString);
+                System.out.println("New tag create with id: " + tmpTag.getId() + " epc: " + tmpTag.getEPC());
+
+                returnList.add(i,tmpTag);
+                System.out.println(returnList);
+                i++;
+            } while (cursor.moveToNext());
+        }
+        else {
+        }
+
+        cursor.close();
+        db.close();
+        System.out.println(returnList);
+        return returnList;
     }
 }
