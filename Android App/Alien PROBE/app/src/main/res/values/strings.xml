@@ -34,7 +34,7 @@
     <string name="scan_operation_activity_text">Scan/Operation</string>
     <string name="reads_box_text">RFID Reads</string>
     <string name="stop_button_text">Stop</string>
-    <string name="save_button_text">Save</string>
+    <string name="save_button_text">GetTagList</string>
     <string name="clear_button_text">Clear</string>
 
     <!-- About -->

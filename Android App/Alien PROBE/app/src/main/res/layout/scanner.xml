@@ -7,7 +7,7 @@
     tools:context=".ScannerActivity">
 
     <ScrollView
-        android:id="@+id/scrollView"
+        android:id="@+id/readsScrollView"
         android:layout_width="336dp"
         android:layout_height="300dp"
         android:layout_marginTop="104dp"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView" />
+        app:layout_constraintTop_toBottomOf="@+id/readsScrollView" />
 
     <Button
         android:id="@+id/btnScannerClear"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toEndOf="@+id/btnScannerSave"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView" />
+        app:layout_constraintTop_toBottomOf="@+id/readsScrollView" />
 
     <TextView
         android:id="@+id/textView3"
@@ -52,7 +52,7 @@
         android:text="@string/reads_box_text"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintBottom_toTopOf="@+id/readsScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnScannerSave"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView" />
+        app:layout_constraintTop_toBottomOf="@+id/readsScrollView" />
 
     <Button
         android:id="@+id/btnViewScanToMain"
