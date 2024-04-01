@@ -1,24 +1,44 @@
 package com.example.alienprobe
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.database.sqlite.SQLiteConstraintException
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
 import android.widget.Button
-import android.widget.ToggleButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
-import android.util.Log
-import android.media.MediaPlayer
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AlertDialog
 
 //import RFIDTag class
 var tagList: MutableList<RFIDTag> = mutableListOf()
 
 class ScannerActivity : AppCompatActivity() {
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.scanner)
 
+        checkAndRequestLocationPermissions()
+
+        setupUI()
+
+    }
+    private fun setupUI() {
+        //make sure to initialize this here or else scannerActivity will crash
         val reader = AlienScanner(this)
 
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
@@ -118,26 +138,47 @@ class ScannerActivity : AppCompatActivity() {
                 linearLayout.addView(textView)
             }
         }
+
+    }
+    private fun checkAndRequestLocationPermissions() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+        }
     }
 
-    fun updateTagList(tagList: List<String>) {
-        val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
-        linearLayout.removeAllViews() // Clear previous views
-        for (tag in tagList) {
-            val textView = TextView(this).apply {
-                text = tag
-                // Optional: add styling here
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            LOCATION_PERMISSION_REQUEST_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission was granted. Continue with location-related functionality
+                } else {
+                    // Permission was denied. Provide an explanation to the user and guide them to enable it through settings
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+                        showPermissionDeniedExplanation()
+                    } else {
+                        // User also checked "Don't ask again". Guide them to app settings.
+                        guideUserToAppSettings()
+                    }
+                }
             }
-            linearLayout.addView(textView)
         }
-
-        if (tagList.isEmpty()) {
-            // If tagList is empty, display a placeholder or error message
-            val textView = TextView(this).apply {
-                text = "No tags found."
-                // Optional: add styling here
+    }
+    private fun showPermissionDeniedExplanation() {
+        AlertDialog.Builder(this)
+            .setMessage("This app requires location permissions to scan and associate tags with their locations. Please allow location access.")
+            .setPositiveButton("OK") { dialog, which ->
+                checkAndRequestLocationPermissions()
             }
-            linearLayout.addView(textView)
-        }
+            .setNegativeButton("Cancel", null)
+            .create()
+            .show()
+    }
+    private fun guideUserToAppSettings() {
+        Toast.makeText(this, "Please enable location permissions in app settings", Toast.LENGTH_LONG).show()
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$packageName"))
+        startActivity(intent)
     }
 }
