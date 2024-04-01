@@ -72,6 +72,7 @@ class ScannerActivity : AppCompatActivity() {
                 if (!tagList.any { it.epc == tempTag.epc }) {
                     tagList.add(tempTag)
                 }
+                //add condition to remove from list
             }
 
             linearLayout.removeAllViews()
@@ -79,16 +80,14 @@ class ScannerActivity : AppCompatActivity() {
             //Add tags to linear layout
             if (tagList.isNotEmpty()) {
                 for (tag in tagList) {
+
+                    //Add Tag Data to Scroll View
                     val textView = TextView(this).apply {
                         text = "EPC: ${tag.getEpc()}" // Accessing EPC data from RFIDTag object
                     }
                     linearLayout.addView(textView)
-                }
-                for (tag in tagList) {
-                    val textView = TextView(this).apply {
-                        text = "EPC: ${tag.getEpc()}" // Accessing EPC data from RFIDTag object
-                    }
-                    linearLayout.addView(textView)
+
+                    //Add Tag data to Database
                     try {
                         val tagModel: TagModel = TagModel(-1, "${tag.getEpc()}")
                         val success = dataBaseHelper.addOne(tagModel)

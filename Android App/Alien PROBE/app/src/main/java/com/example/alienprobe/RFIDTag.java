@@ -1,8 +1,11 @@
+//Tag Model for ScrollView
+
 package com.example.alienprobe;
 
 public class RFIDTag {
     private String epc;
-    //private String geolocation;
+    private double latitude;
+    private double longitude;
     // Constructor
     public RFIDTag(String epc) {
         this.epc = epc;
