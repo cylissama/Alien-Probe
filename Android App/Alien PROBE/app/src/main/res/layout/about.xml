@@ -10,7 +10,7 @@
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="58dp"
+        android:layout_marginBottom="45dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,10 +21,35 @@
         android:id="@+id/how_to_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/how_to_text"
         android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/scanner_about_box"
+        android:layout_width="193dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:text="Scanner Screen"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scanner_about_box_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/explanation_box" />
+
+    <TextView
+        android:id="@+id/setup_about_box"
+        android:layout_width="164dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="94dp"
+        android:layout_marginBottom="30dp"
+        android:text="Setup Screen"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/explanation_box"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,27 +58,51 @@
 
     <TextView
         android:id="@+id/explanation_box"
-        android:layout_width="412dp"
-        android:layout_height="109dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="368dp"
-        android:text="@string/explanation_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/setup_about_text"
+        app:layout_constraintBottom_toTopOf="@+id/scanner_about_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setup_about_box" />
+
+    <TextView
+        android:id="@+id/scanner_about_box_details"
+        android:layout_width="364dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="29dp"
+        android:text="@string/scanner_about_text1"
+        app:layout_constraintBottom_toTopOf="@+id/scanner_about_box_details2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scanner_about_box" />
+
+    <TextView
+        android:id="@+id/scanner_about_box_details2"
+        android:layout_width="359dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="62dp"
+        android:text="@string/scanner_about_text2"
         app:layout_constraintBottom_toTopOf="@+id/designed_by_text_box"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/how_to_box" />
+        app:layout_constraintTop_toBottomOf="@+id/scanner_about_box_details" />
 
     <TextView
         android:id="@+id/designed_by_text_box"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="55dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/designed_by_text"
         app:layout_constraintBottom_toTopOf="@+id/back_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/explanation_box" />
+        app:layout_constraintTop_toBottomOf="@+id/scanner_about_box_details2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

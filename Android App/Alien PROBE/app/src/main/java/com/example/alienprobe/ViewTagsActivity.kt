@@ -2,7 +2,6 @@ package com.example.alienprobe
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,12 +21,7 @@ class ViewTagsActivity : AppCompatActivity() {
         tagsRecyclerView.layoutManager = LinearLayoutManager(this)
 
         dataBaseHelper = DataBaseHelper(this)
-        val allTags = dataBaseHelper.getAllTags() // Implement this method to fetch tags
-
-/*        Log.d("ViewTagsActivity", "Number of tags fetched: ${allTags.size}")
-        allTags.forEach { tag ->
-            Log.d("ViewTagsActivity", "Tag: ${tag.toString()}")
-        }*/
+        val allTags = dataBaseHelper.getAllTags()
 
         adapter = TagsAdapter(this, allTags)
         tagsRecyclerView.adapter = adapter
@@ -38,5 +32,10 @@ class ViewTagsActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    fun onDeleteTag(tagId: String?) {
+        dataBaseHelper.deleteTag(tagId)
+        // Update your adapter's data set and refresh the RecyclerView as needed
+    }
+
 }
 

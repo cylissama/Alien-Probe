@@ -1,20 +1,25 @@
 package com.example.alienprobe
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.example.alienprobe.databinding.SettingsBinding
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
 class SettingsActivity : AppCompatActivity() {
 
     // Lateinit var for binding
     private lateinit var binding: SettingsBinding
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +29,9 @@ class SettingsActivity : AppCompatActivity() {
         binding = SettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadPreferences()
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
         //back button to main
         val buttonClick = findViewById<Button>(R.id.btnViewSettingsToMain)
         buttonClick.setOnClickListener {
@@ -42,6 +50,31 @@ class SettingsActivity : AppCompatActivity() {
             toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 0)
             toast.show()
             loadPreferences()
+        }
+    }
+    private fun getLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
+            // Got last known location. In some rare situations, this can be null.
+            location?.let {
+                // Logic to handle location object
+            }
         }
     }
     private fun savePreferences(

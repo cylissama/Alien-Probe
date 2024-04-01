@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +14,6 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
 
     private List<TagModel> tagsList;
     private LayoutInflater inflater;
-
     public TagsAdapter(Context context, List<TagModel> tagsList) {
         this.inflater = LayoutInflater.from(context);
         this.tagsList = tagsList;
@@ -46,4 +46,8 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
             epcTextView = itemView.findViewById(R.id.epcTextView);
         }
     }
+    public interface TagInteractionListener {
+        void onDeleteTag(String tagId);
+    }
+
 }

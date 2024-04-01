@@ -50,6 +50,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             db.close();
         }
     }
+    public boolean deleteTag(String tagId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(RFIDTAG_TABLE, "id = ?", new String[]{tagId}) > 0;
+    }
+
 
     public List<TagModel> getAllTags() {
         List<TagModel> returnList = new ArrayList<>();
