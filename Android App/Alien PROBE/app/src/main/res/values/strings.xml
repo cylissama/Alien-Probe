@@ -5,11 +5,11 @@
     <!-- Main string list -->
     <string name="textStartScanning">Start Scanning</string>
 
-    <!-- back button text -->
+    <!-- universal -->
     <string name="textBack">Back</string>
-
     <string name="main_activity_text">Alien P.R.O.B.E</string>
     <string name="scan_button_home">Scan</string>
+    <string name="save_button_text">Save</string>
 
     <!-- Settings -->
     <string name="setup_button_home">Setup</string>
@@ -29,13 +29,13 @@
     <string name="network_radio_text">Network</string>
     <string name="bluetooth_radio_text">Bluetooth</string>
 
-
     <!-- Scanner -->
     <string name="scan_operation_activity_text">Scan/Operation</string>
     <string name="reads_box_text">RFID Reads</string>
     <string name="stop_button_text">Stop</string>
-    <string name="save_button_text">Save</string>
+    <string name="scan_button_text">Scan</string>
     <string name="clear_button_text">Clear</string>
+    <string name="view_tags_text">View Tags</string>
 
     <!-- About -->
     <string name="how_to_text">How to use this app</string>
