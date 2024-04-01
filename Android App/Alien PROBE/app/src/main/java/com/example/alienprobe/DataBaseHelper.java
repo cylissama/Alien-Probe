@@ -13,9 +13,13 @@ import java.util.List;
 import androidx.annotation.Nullable;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    public static final String COLUMN_ID = "ID";
     public static final String RFIDTAG_TABLE = "RFIDTAG_TABLE";
+    public static final String COLUMN_ID = "ID";
     public static final String COLUMN_EPC_STRING = "EPC_STRING";
+    public static final String COLUMN_LAT_DOUBLE = "LATITUDE";
+    public static final String COLUMN_LONG_DOUBLE = "LONGITUDE";
+
+
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, "RF" + COLUMN_ID + "Tag.db", null, 1);
@@ -23,7 +27,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement = "CREATE TABLE " + RFIDTAG_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_EPC_STRING + " TEXT NOT NULL UNIQUE)";
+        String createTableStatement = "CREATE TABLE " + RFIDTAG_TABLE + " (" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_EPC_STRING + " TEXT NOT NULL UNIQUE, " +
+                COLUMN_LONG_DOUBLE + " DOUBLE NOT NULL, " +
+                COLUMN_LAT_DOUBLE + " DOUBLE NOT NULL)";
 
         db.execSQL(createTableStatement);
     }
@@ -38,6 +46,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_EPC_STRING, tag.getEPC());
+        cv.put(COLUMN_LAT_DOUBLE, tag.getLongitude());
+        cv.put(COLUMN_LONG_DOUBLE, tag.getLatitude());
 
         try {
             // insertOrThrow() will throw SQLiteConstraintException if a UNIQUE constraint is violated
@@ -69,11 +79,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             // Loop through the cursor (result set) and create new TagModel objects. Put them into the return list.
             do {
                 int tagID = cursor.getInt(0);
-                System.out.println(tagID);
                 String epcString = cursor.getString(1);
-                System.out.println(epcString);
+                double longitude = cursor.getDouble(2);
+                double latitude = cursor.getDouble(3);
 
-                TagModel tmpTag = new TagModel(tagID, epcString);
+                TagModel tmpTag = new TagModel(tagID, epcString, longitude, latitude);
                 System.out.println("New tag create with id: " + tmpTag.getId() + " epc: " + tmpTag.getEPC());
 
                 returnList.add(i,tmpTag);

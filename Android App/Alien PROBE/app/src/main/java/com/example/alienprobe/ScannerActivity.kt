@@ -89,7 +89,9 @@ class ScannerActivity : AppCompatActivity() {
 
                     //Add Tag data to Database
                     try {
-                        val tagModel: TagModel = TagModel(-1, "${tag.getEpc()}")
+                        val long: Double = 0.0
+                        val lat: Double = 0.0
+                        val tagModel: TagModel = TagModel(-1, "${tag.getEpc()}", long, lat)
                         val success = dataBaseHelper.addOne(tagModel)
                         if (success) {
                             val textView = TextView(this).apply {
