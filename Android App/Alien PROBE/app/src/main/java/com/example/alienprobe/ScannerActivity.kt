@@ -66,7 +66,7 @@ class ScannerActivity : AppCompatActivity() {
             var tempTagList: MutableList<RFIDTag> = mutableListOf()
             tempTagList = reader.GetTagList()
 
-            Thread.sleep(1000)
+            Thread.sleep(500)
 
             for (tempTag in tempTagList) {
                 if (!tagList.any { it.epc == tempTag.epc }) {
