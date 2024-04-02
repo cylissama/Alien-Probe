@@ -9,7 +9,6 @@ import android.icu.util.Calendar
 import android.location.Location
 import android.media.MediaPlayer
 import android.net.Uri
-import android.nfc.Tag
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -29,9 +28,7 @@ import java.util.Locale
 var tagList: MutableList<RFIDTag> = mutableListOf()
 
 class ScannerActivity : AppCompatActivity() {
-    companion object {
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
-    }
+    companion object { private const val LOCATION_PERMISSION_REQUEST_CODE = 1 }
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var lastLocation: Location? = null
@@ -75,13 +72,11 @@ class ScannerActivity : AppCompatActivity() {
         //toggle button
         val toggleOnOff = findViewById<ToggleButton>(R.id.toggleScanner)
         toggleOnOff.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked) {
-                println("Switch On")
-            } else {
-                println("END OF THING")
+            while(isChecked) {
+
             }
         }
-        // getListButton // NEED TO MODULARIZE THIS BC IT IS BAD //
+        // getList button
         val getList = findViewById<Button>(R.id.getTagListButton)
         getList.setOnClickListener {
             getLastLocation()
@@ -93,6 +88,7 @@ class ScannerActivity : AppCompatActivity() {
         }
     }
     private fun addTagToDB(tag: RFIDTag) {
+        /// ADD SOME COROUTINES HERE AS SPECIFIED BY CHATGPT ///
         val currentTime = getCurrentTime()
         val dataBaseHelper: DataBaseHelper = DataBaseHelper(this)
         try {
