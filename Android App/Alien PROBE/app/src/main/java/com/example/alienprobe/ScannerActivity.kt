@@ -9,6 +9,7 @@ import android.icu.util.Calendar
 import android.location.Location
 import android.media.MediaPlayer
 import android.net.Uri
+import android.nfc.Tag
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -52,7 +53,6 @@ class ScannerActivity : AppCompatActivity() {
         //make sure to initialize this here or else scannerActivity will crash
         val reader = AlienScanner(this)
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
-
         /// BUTTON LISTENERS ///
         //back button
         val buttonClick = findViewById<Button>(R.id.btnViewScanToMain)
@@ -84,72 +84,102 @@ class ScannerActivity : AppCompatActivity() {
         // getListButton // NEED TO MODULARIZE THIS BC IT IS BAD //
         val getList = findViewById<Button>(R.id.getTagListButton)
         getList.setOnClickListener {
-
             getLastLocation()
-            val currentTime = Calendar.getInstance()
-            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-            val formattedTime = dateFormat.format(currentTime.time)
-
-            val mediaPlayer = MediaPlayer.create(this, R.raw.alien_blaster)
-            mediaPlayer.start()
-            mediaPlayer.setOnCompletionListener {
-                it.release()
-            }
-
-            val dataBaseHelper: DataBaseHelper = DataBaseHelper(this)
-
+            playSound()
             val tempTagList: MutableList<RFIDTag> = reader.GetTagList()
-
             Thread.sleep(500)
-
-            for (tempTag in tempTagList) {
-                if (!tagList.any { it.epc == tempTag.epc }) {
-                    tagList.add(tempTag)
-                }
-                //add condition to remove from list
+            checkForDuplicateTags(linearLayout,tempTagList)
+            addTagsToView(linearLayout)
+        }
+    }
+    private fun addTagToDB(tag: RFIDTag) {
+        val currentTime = getCurrentTime()
+        val dataBaseHelper: DataBaseHelper = DataBaseHelper(this)
+        try {
+            val long: Double = lastLocation!!.longitude
+            val lat: Double = lastLocation!!.latitude
+            val time: String = currentTime
+            val tagModel: TagModel = TagModel(-1, "${tag.getEPC()}", long, lat, time)
+            val success = dataBaseHelper.addOne(tagModel)
+            if (success) {
+                Log.d("Insertion", "new tag: ${tag.getEPC()} added.")
             }
+        } catch (e: SQLiteConstraintException) {
+            // Handle the duplicate entry case, maybe log it or inform the user
+            Log.d("Insertion", "Duplicate EPC: ${tag.getEPC()} not added.")
+        } catch (e: Exception) {
+            Log.d("Insertion", "ERROR: ${tag.getEPC()} not added.")
+        }
+    }
+    private fun addTagsToView(linearLayout: LinearLayout) {
+        if (tagList.isNotEmpty()) {
+            for (tag in tagList) {
 
-            linearLayout.removeAllViews()
-
-            //Add tags to linear layout
-            if (tagList.isNotEmpty()) {
-                for (tag in tagList) {
-
-                    //Add Tag Data to Scroll View
-                    val textView = TextView(this).apply {
-                        text = "EPC: ${tag.getEPC()}"
-                    }
-                    linearLayout.addView(textView)
-
-                    try {
-                        val long: Double = lastLocation!!.longitude
-                        val lat: Double = lastLocation!!.latitude
-                        val time: String = formattedTime
-                        val tagModel: TagModel = TagModel(-1, "${tag.getEPC()}", long, lat, time)
-                        val success = dataBaseHelper.addOne(tagModel)
-                        if (success) {
-                            Toast.makeText(this, "Worked", Toast.LENGTH_LONG).show()
-                        }
-                    } catch (e: SQLiteConstraintException) {
-                        // Handle the duplicate entry case, maybe log it or inform the user
-                        Log.d("Insertion", "Duplicate EPC: ${tag.getEPC()} not added.")
-                    } catch (e: Exception) {
-                        // Handle other exceptions
-                        val textView = TextView(this).apply {
-                            text = "Error adding tag: ${e.message}"
-                        }
-                        linearLayout.addView(textView)
-                        Log.d("Insertion", "ERROR: ${tag.getEPC()} not added.")
-                    }
-                }
-            } else {
+                //Add Tag Data to Scroll View
                 val textView = TextView(this).apply {
-                    text = "No tags found."
+                    text = "EPC: ${tag.getEPC()}"
                 }
                 linearLayout.addView(textView)
+                addTagToDB(tag)
+            }
+        } else {
+            val textView = TextView(this).apply {
+                text = "No tags found."
+            }
+            linearLayout.addView(textView)
+        }
+    }
+    private fun checkForDuplicateTags(linearLayout: LinearLayout, tempTagList: MutableList<RFIDTag>) {
+        for (tempTag in tempTagList) {
+            if (!tagList.any { it.epc == tempTag.epc }) {
+                tagList.add(tempTag)
+            }
+        }
+        linearLayout.removeAllViews()
+    }
+    private fun playSound() {
+        val mediaPlayer = MediaPlayer.create(this, R.raw.alien_blaster)
+        mediaPlayer.start()
+        mediaPlayer.setOnCompletionListener {
+            it.release()
+        }
+    }
+    private fun getCurrentTime():  String {
+        val currentTime = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val formattedTime = dateFormat.format(currentTime.time)
+        return formattedTime
+    }
+    private fun getLastLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // Permission check failed. Exit the method.
+            return
+        }
+        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+            // Got last known location. In some rare situations, this can be null.
+            if (location != null) {
+                lastLocation = location // Update the lastLocation variable with the new location
+                // Optionally, use the location data immediately for some task
+                // For example, updating the UI or logging
+                val latitude = location.latitude
+                val longitude = location.longitude
+                Log.d("LocationUpdate", "New location received: Lat $latitude, Lon $longitude")
+            } else {
+                // Handle the case where location is null
+                Log.d("LocationUpdate", "No location received")
             }
         }
     }
+    private fun showLocationToast() {
+        val locationMessage = if (lastLocation != null) {
+            "Latitude: ${lastLocation!!.latitude}, Longitude: ${lastLocation!!.longitude}"
+        } else {
+            "Location not available"
+        }
+
+        Toast.makeText(this, locationMessage, Toast.LENGTH_LONG).show()
+    }
+    /// PERMISSION FUNCTIONS ///
     private fun checkAndRequestLocationPermissions() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
             ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -190,33 +220,5 @@ class ScannerActivity : AppCompatActivity() {
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$packageName"))
         startActivity(intent)
     }
-    private fun getLastLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // Permission check failed. Exit the method.
-            return
-        }
-        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-            // Got last known location. In some rare situations, this can be null.
-            if (location != null) {
-                lastLocation = location // Update the lastLocation variable with the new location
-                // Optionally, use the location data immediately for some task
-                // For example, updating the UI or logging
-                val latitude = location.latitude
-                val longitude = location.longitude
-                Log.d("LocationUpdate", "New location received: Lat $latitude, Lon $longitude")
-            } else {
-                // Handle the case where location is null
-                Log.d("LocationUpdate", "No location received")
-            }
-        }
-    }
-    private fun showLocationToast() {
-        val locationMessage = if (lastLocation != null) {
-            "Latitude: ${lastLocation!!.latitude}, Longitude: ${lastLocation!!.longitude}"
-        } else {
-            "Location not available"
-        }
 
-        Toast.makeText(this, locationMessage, Toast.LENGTH_LONG).show()
-    }
 }
