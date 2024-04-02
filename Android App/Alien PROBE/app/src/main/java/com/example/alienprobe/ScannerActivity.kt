@@ -132,10 +132,7 @@ class ScannerActivity : AppCompatActivity() {
                         val tagModel: TagModel = TagModel(-1, "EPC: ${tag.getEPC()}", long, lat, time)
                         val success = dataBaseHelper.addOne(tagModel)
                         if (success) {
-                            val textView = TextView(this).apply {
-                                text = "EPC: ${tag.getEPC()}"
-                            }
-                            linearLayout.addView(textView)
+                            Toast.makeText(this, "Worked", Toast.LENGTH_LONG).show()
                         }
                     } catch (e: SQLiteConstraintException) {
                         // Handle the duplicate entry case, maybe log it or inform the user
@@ -157,7 +154,6 @@ class ScannerActivity : AppCompatActivity() {
                 }
                 linearLayout.addView(textView)
             }
-            showLocationToast()
         }
     }
     private fun checkAndRequestLocationPermissions() {
