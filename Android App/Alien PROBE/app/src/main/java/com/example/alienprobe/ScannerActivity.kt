@@ -84,16 +84,17 @@ class ScannerActivity : AppCompatActivity() {
         val getList = findViewById<Button>(R.id.getTagListButton)
         getList.setOnClickListener {
 
+            getLastLocation()
+
             val mediaPlayer = MediaPlayer.create(this, R.raw.alien_blaster)
-            mediaPlayer.start() // Play the sound effect
+            mediaPlayer.start()
             mediaPlayer.setOnCompletionListener {
-                it.release() // Release the MediaPlayer resource once the sound is completed
+                it.release()
             }
 
             val dataBaseHelper: DataBaseHelper = DataBaseHelper(this)
 
-            var tempTagList: MutableList<RFIDTag> = mutableListOf()
-            tempTagList = reader.GetTagList()
+            val tempTagList: MutableList<RFIDTag> = reader.GetTagList()
 
             Thread.sleep(500)
 
@@ -112,25 +113,25 @@ class ScannerActivity : AppCompatActivity() {
 
                     //Add Tag Data to Scroll View
                     val textView = TextView(this).apply {
-                        text = "EPC: ${tag.getEpc()}" // Accessing EPC data from RFIDTag object
+                        text = "EPC: ${tag.getEPC()}" // Accessing EPC data from RFIDTag object
                     }
                     linearLayout.addView(textView)
 
                     //Add Tag data to Database
                     try {
-                        val long: Double = 0.0
-                        val lat: Double = 0.0
-                        val tagModel: TagModel = TagModel(-1, "${tag.getEpc()}", long, lat)
+                        val long: Double = lastLocation!!.longitude
+                        val lat: Double = lastLocation!!.latitude
+                        val tagModel: TagModel = TagModel(-1, "EPC: ${tag.getEPC()}", long, lat)
                         val success = dataBaseHelper.addOne(tagModel)
                         if (success) {
                             val textView = TextView(this).apply {
-                                text = "EPC: ${tag.getEpc()}"
+                                text = "EPC: ${tag.getEPC()}"
                             }
                             linearLayout.addView(textView)
                         }
                     } catch (e: SQLiteConstraintException) {
                         // Handle the duplicate entry case, maybe log it or inform the user
-                        Log.d("Insertion", "Duplicate EPC: ${tag.getEpc()} not added.")
+                        Log.d("Insertion", "Duplicate EPC: ${tag.getEPC()} not added.")
                     } catch (e: Exception) {
                         // Handle other exceptions
                         val textView = TextView(this).apply {

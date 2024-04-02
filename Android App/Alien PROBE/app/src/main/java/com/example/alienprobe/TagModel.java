@@ -20,7 +20,9 @@ public class TagModel {
     public String toString() {
         return "tagModel{" +
                 "id=" + id +
-                ", epc='" + epc + ':' +
+                ", epc='" + epc + '\'' +
+                ", longitude=" + longitude +
+                ", latitude=" + latitude +
                 '}';
     }
 
