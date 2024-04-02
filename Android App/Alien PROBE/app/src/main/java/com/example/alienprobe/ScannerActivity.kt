@@ -129,7 +129,7 @@ class ScannerActivity : AppCompatActivity() {
                         val long: Double = lastLocation!!.longitude
                         val lat: Double = lastLocation!!.latitude
                         val time: String = formattedTime
-                        val tagModel: TagModel = TagModel(-1, "EPC: ${tag.getEPC()}", long, lat, time)
+                        val tagModel: TagModel = TagModel(-1, "${tag.getEPC()}", long, lat, time)
                         val success = dataBaseHelper.addOne(tagModel)
                         if (success) {
                             Toast.makeText(this, "Worked", Toast.LENGTH_LONG).show()

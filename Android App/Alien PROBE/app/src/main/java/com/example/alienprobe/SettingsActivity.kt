@@ -52,31 +52,6 @@ class SettingsActivity : AppCompatActivity() {
             loadPreferences()
         }
     }
-    private fun getLocation() {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return
-        }
-        fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
-            // Got last known location. In some rare situations, this can be null.
-            location?.let {
-                // Logic to handle location object
-            }
-        }
-    }
     private fun savePreferences(
         username: String,
         password: String,
@@ -95,10 +70,10 @@ class SettingsActivity : AppCompatActivity() {
     }
     private fun loadPreferences() {
         val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
-        val savedUsername = sharedPreferences.getString("Username", "DefaultUsername")
-        val savedPassword = sharedPreferences.getString("Password", "DefaultPassword")
-        val savedIP = sharedPreferences.getString("IP", "DefaultIP")
-        val savedPort = sharedPreferences.getInt("Port", 0)
+        val savedUsername = sharedPreferences.getString("Username", "alien")
+        val savedPassword = sharedPreferences.getString("Password", "password")
+        val savedIP = sharedPreferences.getString("IP", "161.6.219.3")
+        val savedPort = sharedPreferences.getInt("Port", 23)
         val readerIPInput = findViewById<TextView>(R.id.readerIPInput)
         readerIPInput.hint = savedIP
         val readerPortInput = findViewById<TextView>(R.id.readerPortInput)
