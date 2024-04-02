@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3bbbeada-3afb-4857-bf4d-393aadcf1385" name="Changes" comment="" />
+    <list default="true" id="3bbbeada-3afb-4857-bf4d-393aadcf1385" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/res/drawable/mybutton.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/res/drawable/wku_background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/res/drawable/wku_logo_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/res/font/open_sans_semibold.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/res/values/font_certs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/res/values/preloaded_fonts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/res/layout/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/res/layout/main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Android App/Alien PROBE/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +34,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "DixonAndroid",
+    "git-widget-placeholder": "androidGPS",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
@@ -44,5 +55,15 @@
       <updated>1711326611648</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/out/production/AlienProject/AlienGetTagList.class</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

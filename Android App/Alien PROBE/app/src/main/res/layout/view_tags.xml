@@ -3,16 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewTagsActivity">
+    tools:context=".ViewTagsActivity"
+    android:background="@color/lightest_grey">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tagsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="567dp"
+        android:layout_width="364dp"
+        android:layout_height="559dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="86dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="82dp" />
 
     <TextView
         android:id="@+id/viewTagsTitle"
@@ -23,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
-        android:text="View Stored Tags" />
+        android:text="Stored Tags" />
 
     <Button
         android:id="@+id/backButtonTagView"
@@ -31,17 +33,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="21dp"
-        android:text="Back" />
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="11dp"
+        android:background="@drawable/mybutton"
+        android:text="Back"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/mapsButton"
+        android:textColor="@color/white"
+        android:background="@drawable/mybutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="117dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="291dp"
+        android:layout_marginBottom="10dp"
         android:text="Map" />
 
 </RelativeLayout>

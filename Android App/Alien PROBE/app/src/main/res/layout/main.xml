@@ -6,27 +6,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="@color/lightest_grey"
+    android:foregroundTint="#009E9BF6"
     android:gravity="center"
     android:orientation="horizontal">
 
-   <ImageView
-        android:id="@+id/alien_probe_logo"
-        android:layout_width="match_parent"
-        android:layout_height="320dp"
-        android:layout_marginTop="125dp"
-        android:src="@drawable/alien_probe_logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/guideline_center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/wkulong"/>
 
+ <androidx.constraintlayout.widget.ConstraintLayout
+     android:id="@+id/constraintLayout"
+     android:layout_width="392dp"
+     android:layout_height="239dp"
+     android:background="@color/wku_red_darker"
+     android:fadingEdge="horizontal"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+  <TextView
+      android:id="@+id/app_name_text_box"
+      android:layout_width="293dp"
+      android:layout_height="78dp"
+      android:layout_marginStart="48dp"
+      android:layout_marginTop="60dp"
+      android:background="@drawable/mybutton"
+      android:backgroundTint="#00000000"
+      android:fontFamily="serif"
+      android:text="@string/app_name"
+      android:textColor="@color/white"
+      android:textSize="40dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/desc_main_page"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="56dp"
+      android:text="Precision RFID Operational Bridge for Efficiency"
+      android:textColor="@color/white"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/app_name_text_box"
+      app:layout_constraintVertical_bias="0.243" />
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="399dp"
+      android:layout_height="46dp"
+      android:background="@color/lighter_grey"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+ </androidx.constraintlayout.widget.ConstraintLayout>
+
+ <androidx.constraintlayout.widget.Guideline
+     android:id="@+id/guideline_center"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:background="@color/wku_red"
+     android:orientation="horizontal"
+     app:layout_constraintGuide_percent="0.5" />
 
  <TextView
      android:id="@+id/textView"
@@ -39,23 +81,14 @@
      app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintTop_toTopOf="@id/guideline_center" />
 
- <ImageView
-     android:id="@+id/wkulong"
-     android:layout_width="253dp"
-     android:layout_height="98dp"
-     android:layout_marginTop="50dp"
-     android:src="@drawable/wkulong"
-     app:layout_constraintTop_toBottomOf="@id/wkulong"
-     app:layout_constraintStart_toStartOf="parent"
-     app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintBottom_toTopOf="@id/wkulong" />
-
  <Button
      android:id="@+id/btnViewSetup"
      android:layout_width="205dp"
      android:layout_height="75dp"
      android:layout_marginTop="25dp"
+     android:background="@drawable/mybutton"
      android:text="@string/setup_button_home"
+     android:textColor="@color/white"
      app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintTop_toBottomOf="@id/guideline_center" />
@@ -65,7 +98,9 @@
      android:layout_width="205dp"
      android:layout_height="75dp"
      android:layout_marginTop="25dp"
+     android:background="@drawable/mybutton"
      android:text="@string/scan_button_home"
+     android:textColor="@color/white"
      app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintTop_toBottomOf="@id/btnViewSetup" />
@@ -74,10 +109,21 @@
      android:id="@+id/aboutButton"
      android:layout_width="205dp"
      android:layout_height="75dp"
-     android:layout_marginTop="25dp"
+     android:layout_marginTop="24dp"
+     android:background="@drawable/mybutton"
      android:text="About"
+     android:textColor="@color/white"
      app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintTop_toBottomOf="@id/btnViewScanner" />
+
+ <ImageView
+     android:id="@+id/imageView2"
+     android:layout_width="88dp"
+     android:layout_height="0dp"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:srcCompat="@drawable/wku_logo_2"
+     tools:layout_editor_absoluteY="162dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

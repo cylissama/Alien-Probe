@@ -2,22 +2,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/btnViewScanToMain"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/lightest_grey">
 
     <TextView
         android:id="@+id/readerIPText"
-        android:layout_width="153dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="52dp"
         android:layout_weight="1"
-        android:text="@string/reader_ip_text" />
+        android:text="@string/reader_ip_text"
+        android:textColor="@color/text_grey"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/readerIPInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/edit_text_custom"
+        android:textColor="@color/text_grey"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
@@ -27,17 +33,22 @@
 
     <TextView
         android:id="@+id/readerPortText"
-        android:layout_width="153dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="140dp"
-        android:text="@string/reader_port_text" />
+        android:layout_marginTop="133dp"
+        android:text="@string/reader_port_text"
+        android:textColor="@color/text_grey"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/readerPortInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/edit_text_custom"
+        android:textColor="@color/text_grey"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="160dp"
@@ -47,18 +58,24 @@
 
     <TextView
         android:id="@+id/readerUsernameText"
-        android:layout_width="153dp"
-        android:layout_height="32dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="212dp"
         android:layout_weight="1"
-        android:text="@string/reader_username_text" />
+        android:text="@string/reader_username_text"
+        android:textColor="@color/text_grey"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/readerUsernameInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/edit_text_custom"
+        android:textColor="@color/text_grey"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="240dp"
@@ -68,18 +85,23 @@
 
     <TextView
         android:id="@+id/readerPasswordText"
-        android:layout_width="153dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="294dp"
         android:layout_weight="1"
-        android:text="@string/reader_password_text" />
+        android:text="@string/reader_password_text"
+        android:textColor="@color/text_grey"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/readerPasswordInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/edit_text_custom"
+        android:textColor="@color/text_grey"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="320dp"
@@ -112,6 +134,8 @@
 
     <Button
         android:id="@+id/saveButton"
+        android:background="@drawable/mybutton"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -121,6 +145,8 @@
 
     <Button
         android:id="@+id/btnViewSettingsToMain"
+        android:background="@drawable/mybutton"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
