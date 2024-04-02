@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.sqlite.SQLiteConstraintException
+import android.location.Location
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
@@ -18,6 +19,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.appcompat.app.AlertDialog
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
 //import RFIDTag class
 var tagList: MutableList<RFIDTag> = mutableListOf()
@@ -28,9 +31,13 @@ class ScannerActivity : AppCompatActivity() {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
 
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var lastLocation: Location? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.scanner)
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         checkAndRequestLocationPermissions()
 
@@ -38,6 +45,8 @@ class ScannerActivity : AppCompatActivity() {
 
     }
     private fun setupUI() {
+        //get latest gps values
+        getLastLocation()
         //make sure to initialize this here or else scannerActivity will crash
         val reader = AlienScanner(this)
 
@@ -137,8 +146,8 @@ class ScannerActivity : AppCompatActivity() {
                 }
                 linearLayout.addView(textView)
             }
+            showLocationToast()
         }
-
     }
     private fun checkAndRequestLocationPermissions() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
@@ -147,7 +156,6 @@ class ScannerActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
         }
     }
-
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
@@ -180,5 +188,34 @@ class ScannerActivity : AppCompatActivity() {
         Toast.makeText(this, "Please enable location permissions in app settings", Toast.LENGTH_LONG).show()
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$packageName"))
         startActivity(intent)
+    }
+    private fun getLastLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // Permission check failed. Exit the method.
+            return
+        }
+        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+            // Got last known location. In some rare situations, this can be null.
+            if (location != null) {
+                lastLocation = location // Update the lastLocation variable with the new location
+                // Optionally, use the location data immediately for some task
+                // For example, updating the UI or logging
+                val latitude = location.latitude
+                val longitude = location.longitude
+                Log.d("LocationUpdate", "New location received: Lat $latitude, Lon $longitude")
+            } else {
+                // Handle the case where location is null
+                Log.d("LocationUpdate", "No location received")
+            }
+        }
+    }
+    private fun showLocationToast() {
+        val locationMessage = if (lastLocation != null) {
+            "Latitude: ${lastLocation!!.latitude}, Longitude: ${lastLocation!!.longitude}"
+        } else {
+            "Location not available"
+        }
+
+        Toast.makeText(this, locationMessage, Toast.LENGTH_LONG).show()
     }
 }
