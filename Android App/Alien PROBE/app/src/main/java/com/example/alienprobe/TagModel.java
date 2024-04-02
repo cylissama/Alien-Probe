@@ -8,12 +8,14 @@ public class TagModel {
     private String epc;
     private double longitude;
     private double latitude;
+    private String time;
 
-    public TagModel(int id, String epc, double longitude, double latitude) {
+    public TagModel(int id, String epc, double longitude, double latitude, String time) {
         this.id = id;
         this.epc = epc;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.time = time;
     }
 
     @Override
@@ -23,6 +25,7 @@ public class TagModel {
                 ", epc='" + epc + '\'' +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
+                ", time=" + time +
                 '}';
     }
 
@@ -33,7 +36,8 @@ public class TagModel {
     public void setId(int id) {
         this.id = id;
     }
-
+    public void setTime(String time) { this.time = time; }
+    public String getTime() {return this.time; }
     public String getEPC() {
         return this.epc;
     }

@@ -4,6 +4,8 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.sqlite.SQLiteConstraintException
+import android.icu.text.SimpleDateFormat
+import android.icu.util.Calendar
 import android.location.Location
 import android.media.MediaPlayer
 import android.net.Uri
@@ -21,6 +23,7 @@ import androidx.core.content.ContextCompat
 import androidx.appcompat.app.AlertDialog
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import java.util.Locale
 
 //import RFIDTag class
 var tagList: MutableList<RFIDTag> = mutableListOf()
@@ -33,6 +36,7 @@ class ScannerActivity : AppCompatActivity() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var lastLocation: Location? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.scanner)
@@ -85,6 +89,9 @@ class ScannerActivity : AppCompatActivity() {
         getList.setOnClickListener {
 
             getLastLocation()
+            val currentTime = Calendar.getInstance()
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+            val formattedTime = dateFormat.format(currentTime.time)
 
             val mediaPlayer = MediaPlayer.create(this, R.raw.alien_blaster)
             mediaPlayer.start()
@@ -121,7 +128,8 @@ class ScannerActivity : AppCompatActivity() {
                     try {
                         val long: Double = lastLocation!!.longitude
                         val lat: Double = lastLocation!!.latitude
-                        val tagModel: TagModel = TagModel(-1, "EPC: ${tag.getEPC()}", long, lat)
+                        val time: String = formattedTime
+                        val tagModel: TagModel = TagModel(-1, "EPC: ${tag.getEPC()}", long, lat, time)
                         val success = dataBaseHelper.addOne(tagModel)
                         if (success) {
                             val textView = TextView(this).apply {
@@ -138,6 +146,8 @@ class ScannerActivity : AppCompatActivity() {
                             text = "Error adding tag: ${e.message}"
                         }
                         linearLayout.addView(textView)
+                        Log.d("Insertion", "ERROR: ${tag.getEPC()} not added.")
+
                     }
                 }
             } else {
