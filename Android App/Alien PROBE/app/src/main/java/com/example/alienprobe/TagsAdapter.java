@@ -51,7 +51,7 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
                     context.startActivity(mapIntent);
                 } else {
                     // If Google Maps is not installed, open the location in a web browser
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://maps.google.com/?q=" + tag.getLatitude() + "," + tag.getLongitude()));
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://maps.google.com/?q=" + tag.getLongitude() + "," + tag.getLatitude()));
                     context.startActivity(browserIntent);
                 }
             }
