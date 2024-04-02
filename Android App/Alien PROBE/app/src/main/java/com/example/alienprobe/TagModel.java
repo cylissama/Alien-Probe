@@ -6,8 +6,8 @@ package com.example.alienprobe;
 public class TagModel {
     private int id;
     private String epc;
-    private double longitude;
-    private double latitude;
+    private final double longitude;
+    private final double latitude;
     private String time;
 
     public TagModel(int id, String epc, double longitude, double latitude, String time) {
@@ -17,7 +17,6 @@ public class TagModel {
         this.latitude = latitude;
         this.time = time;
     }
-
     @Override
     public String toString() {
         return "tagModel{" +
@@ -28,11 +27,9 @@ public class TagModel {
                 ", time=" + time +
                 '}';
     }
-
     public int getId() {
         return this.id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -41,12 +38,9 @@ public class TagModel {
     public String getEPC() {
         return this.epc;
     }
-
     public void setEpc(String epc) {
         this.epc = epc;
     }
-
     public double getLatitude() { return this.latitude; }
-
     public double getLongitude() { return this.longitude; }
 }

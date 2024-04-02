@@ -19,11 +19,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_LAT_DOUBLE = "LATITUDE";
     public static final String COLUMN_LONG_DOUBLE = "LONGITUDE";
     public static final String COLUMN_TIME = "TIME";
-
     public DataBaseHelper(@Nullable Context context) {
         super(context, "RF" + COLUMN_ID + "Tag.db", null, 1);
     }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement = "CREATE TABLE " + RFIDTAG_TABLE + " (" +
@@ -32,14 +30,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 COLUMN_LONG_DOUBLE + " DOUBLE NOT NULL, " +
                 COLUMN_LAT_DOUBLE + " DOUBLE NOT NULL, " +
                 COLUMN_TIME + " TEXT NOT NULL)";
-
         db.execSQL(createTableStatement);
     }
-
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-    }
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
     public boolean addOne(TagModel tag) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -64,8 +58,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(RFIDTAG_TABLE, "id = ?", new String[]{tagId}) > 0;
     }
-
-
     public List<TagModel> getAllTags() {
         List<TagModel> returnList = new ArrayList<>();
 
@@ -76,7 +68,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         int i = 0;
         if (cursor.moveToFirst()) {
-            // Loop through the cursor (result set) and create new TagModel objects. Put them into the return list.
             do {
                 int tagID = cursor.getInt(0);
                 String epcString = cursor.getString(1);

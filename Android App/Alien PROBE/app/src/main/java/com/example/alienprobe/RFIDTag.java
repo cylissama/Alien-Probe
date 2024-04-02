@@ -8,7 +8,6 @@ public class RFIDTag {
     public RFIDTag(String epc) {
         this.epc = epc;
     }
-    // Getter for EPC
     @Override
     public String toString() {
         return "RFIDTag{" +
@@ -17,7 +16,6 @@ public class RFIDTag {
     public void setEpc(String epc) {
         this.epc = epc;
     }
-
     public String getEPC() {
         return this.epc;
     }

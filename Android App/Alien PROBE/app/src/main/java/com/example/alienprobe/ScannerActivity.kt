@@ -25,11 +25,9 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import java.util.Locale
 
-//import RFIDTag class
 var tagList: MutableList<RFIDTag> = mutableListOf()
 
 class ScannerActivity : AppCompatActivity() {
-
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
@@ -53,7 +51,6 @@ class ScannerActivity : AppCompatActivity() {
         getLastLocation()
         //make sure to initialize this here or else scannerActivity will crash
         val reader = AlienScanner(this)
-
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
         /// BUTTON LISTENERS ///
@@ -84,7 +81,7 @@ class ScannerActivity : AppCompatActivity() {
                 println("END OF THING")
             }
         }
-        // getListButton
+        // getListButton // NEED TO MODULARIZE THIS BC IT IS BAD //
         val getList = findViewById<Button>(R.id.getTagListButton)
         getList.setOnClickListener {
 
@@ -120,11 +117,10 @@ class ScannerActivity : AppCompatActivity() {
 
                     //Add Tag Data to Scroll View
                     val textView = TextView(this).apply {
-                        text = "EPC: ${tag.getEPC()}" // Accessing EPC data from RFIDTag object
+                        text = "EPC: ${tag.getEPC()}"
                     }
                     linearLayout.addView(textView)
 
-                    //Add Tag data to Database
                     try {
                         val long: Double = lastLocation!!.longitude
                         val lat: Double = lastLocation!!.latitude
@@ -144,11 +140,9 @@ class ScannerActivity : AppCompatActivity() {
                         }
                         linearLayout.addView(textView)
                         Log.d("Insertion", "ERROR: ${tag.getEPC()} not added.")
-
                     }
                 }
             } else {
-                // If tagList is empty, display a placeholder or error message
                 val textView = TextView(this).apply {
                     text = "No tags found."
                 }

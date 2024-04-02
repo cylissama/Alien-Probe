@@ -34,7 +34,6 @@ public class AlienScanner {
     public void closeReader(){
         reader.close();
         System.out.println("Connection Closed.");
-
     }
     public List<RFIDTag> GetTagList() {
         List<RFIDTag> outputTags = new ArrayList<>();
@@ -57,7 +56,7 @@ public class AlienScanner {
                     for (String line : outputLines) {
 
                         // Assuming each line represents an RFID tag
-                        RFIDTag tag = new RFIDTag(line); // Replace null with geolocation if available
+                        RFIDTag tag = new RFIDTag(line);
 
                         outputTags.add(tag);
                     }
@@ -86,11 +85,9 @@ public class AlienScanner {
         reader.setUsername(this.readerUserName);
         reader.setPassword(this.readerPassword);
     }
-
     public String respond(){
         return "Hello";
     }
-
     public static void main(String[] args) {
     }
 }

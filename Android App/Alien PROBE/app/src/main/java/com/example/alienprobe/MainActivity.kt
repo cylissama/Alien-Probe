@@ -9,25 +9,24 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main) // Inflating activity_main.xml layout
+        setContentView(R.layout.main)
 
-        val buttonClick = findViewById<Button>(R.id.btnViewScanner)
-        buttonClick.setOnClickListener {
+        val scannerStartButton = findViewById<Button>(R.id.btnViewScanner)
+        scannerStartButton.setOnClickListener {
             val intent = Intent(this, ScannerActivity::class.java)
             startActivity(intent)
         }
 
-        val settingsClick = findViewById<Button>(R.id.btnViewSetup)
-        settingsClick.setOnClickListener {
+        val settingsStartButton = findViewById<Button>(R.id.btnViewSetup)
+        settingsStartButton.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
 
-        val aboutButton = findViewById<Button>(R.id.aboutButton)
-        aboutButton.setOnClickListener {
+        val aboutStartButton = findViewById<Button>(R.id.aboutButton)
+        aboutStartButton.setOnClickListener {
             val intent = Intent(this, AboutActivity::class.java)
             startActivity(intent)
         }
     }
-
 }

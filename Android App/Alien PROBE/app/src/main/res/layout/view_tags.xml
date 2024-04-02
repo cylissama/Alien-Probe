@@ -34,4 +34,14 @@
         android:layout_marginBottom="21dp"
         android:text="Back" />
 
+    <Button
+        android:id="@+id/mapsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="117dp"
+        android:layout_marginBottom="17dp"
+        android:text="Map" />
+
 </RelativeLayout>

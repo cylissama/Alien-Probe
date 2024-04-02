@@ -1,23 +1,19 @@
 package com.example.alienprobe
 
-import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import com.example.alienprobe.databinding.SettingsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
 class SettingsActivity : AppCompatActivity() {
 
-    // Lateinit var for binding
     private lateinit var binding: SettingsBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
@@ -25,7 +21,6 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings)
 
-        // Initialize binding
         binding = SettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadPreferences()
@@ -33,8 +28,8 @@ class SettingsActivity : AppCompatActivity() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         //back button to main
-        val buttonClick = findViewById<Button>(R.id.btnViewSettingsToMain)
-        buttonClick.setOnClickListener {
+        val backToMainButton = findViewById<Button>(R.id.btnViewSettingsToMain)
+        backToMainButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
@@ -52,14 +47,7 @@ class SettingsActivity : AppCompatActivity() {
             loadPreferences()
         }
     }
-    private fun savePreferences(
-        username: String,
-        password: String,
-        ip: String,
-        port: Int,
-        )
-    {
-        // Open Shared Preferences editor to save values
+    private fun savePreferences(username: String, password: String, ip: String, port: Int,) {
         val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("Username",username)
