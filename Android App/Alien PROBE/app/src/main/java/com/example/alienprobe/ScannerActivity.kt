@@ -10,6 +10,8 @@ import android.location.Location
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
 import android.util.Log
 import android.widget.Button
@@ -69,13 +71,30 @@ class ScannerActivity : AppCompatActivity() {
             tagList.clear()
             linearLayout.removeAllViews()
         }
-        //toggle button
+
         val toggleOnOff = findViewById<ToggleButton>(R.id.toggleScanner)
         toggleOnOff.setOnCheckedChangeListener { _, isChecked ->
-            while(isChecked) {
-
+            if (isChecked) {
+                // Start background thread when toggle is ON
+                Thread {
+                    while (toggleOnOff.isChecked) {
+                        getLastLocation()
+                        playSound()
+                        val tempTagList: MutableList<RFIDTag> = reader.GetTagList()
+                        // Use a handler to perform UI operations on the main thread
+                        Thread.sleep(1250)
+                        Handler(Looper.getMainLooper()).post {
+                            checkForDuplicateTags(linearLayout, tempTagList)
+                            addTagsToView(linearLayout)
+                        }
+                    }
+                }.start()
+            } else {
+                // Handle what to do when toggle is OFF if needed
             }
         }
+
+
         // getList button
         val getList = findViewById<Button>(R.id.getTagListButton)
         getList.setOnClickListener {

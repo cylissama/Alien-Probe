@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.alien.enterpriseRFID.reader.AlienClass1Reader;
+import com.alien.enterpriseRFID.reader.AbstractReader;
+
 
 import java.net.Socket;
 import java.util.*;
@@ -44,25 +46,31 @@ public class AlienScanner {
                     Socket socket = new Socket(readerIP, readerPort);
                     reader.setUsername(readerUserName);
                     reader.setPassword(readerPassword);
-                    reader.open();
-                    System.out.println("connection opened");
 
-                    String commandOutput = reader.doReaderCommand("t");
+                    if (reader.isValidateOpen()) {
+                        reader.open();
+                        System.out.println("connection opened");
 
-                    System.out.println(commandOutput);
-                    List<String> outputLines = Arrays.stream(commandOutput.split("\\r?\\n"))
-                            .collect(Collectors.toList());
+                        Thread.sleep(100);
 
-                    for (String line : outputLines) {
+                        String commandOutput = reader.doReaderCommand("t");
 
-                        // Assuming each line represents an RFID tag
-                        RFIDTag tag = new RFIDTag(line);
+                        System.out.println(commandOutput);
+                        List<String> outputLines = Arrays.stream(commandOutput.split("\\r?\\n"))
+                                .collect(Collectors.toList());
 
-                        outputTags.add(tag);
+                        for (String line : outputLines) {
+
+                            // Assuming each line represents an RFID tag
+                            RFIDTag tag = new RFIDTag(line);
+
+                            outputTags.add(tag);
+                        }
+                        reader.close();
+                        System.out.println("connection closed");
+                        socket.close();
                     }
-                    reader.close();
-                    System.out.println("connection closed");
-                    socket.close();
+
                 } catch (Exception e) {
                     System.out.println(e);
                     e.printStackTrace();
