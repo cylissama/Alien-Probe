@@ -18,8 +18,7 @@ import java.sql.Connection;
 public class AlienGUI extends JFrame {
 
     Connection conn = databaseConnect();
-
-    AlienGetTagList tagGetter = new AlienGetTagList();
+    AlienReader tagGetter = new AlienReader();
     DefaultListModel<String> listModel = new DefaultListModel<>();
     private Timer timer; // Timer to manage periodic updates
     private JLabel statusLabel; // Label to show the current status
@@ -108,7 +107,8 @@ public class AlienGUI extends JFrame {
         tabbedPane.addTab("Settings", settingsPanel);
 
         add(tabbedPane);
-        timer = new Timer(5000, new ActionListener() {
+
+        timer = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Add a new item to the list model every second

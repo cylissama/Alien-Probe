@@ -6,7 +6,7 @@ import com.alien.enterpriseRFID.reader.AlienReaderTimeoutException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class AlienGetTagList {
+public class AlienReader {
 
     public String readerIP;
     public String readerPort;
@@ -15,13 +15,15 @@ public class AlienGetTagList {
     public static AlienClass1Reader reader = new AlienClass1Reader();
 
     public static void main(String[] args) {
-        reader.setConnection("161.6.141.148", 23); // Replace with your reader's IP address
-        reader.setUsername("alien"); // Add your reader's username
-        reader.setPassword("password"); // Add your reader's password
+
     }
-    public void openReader(){
+
+    public AlienReader(){
+        openReader();
+    }
+    public static void openReader(){
         try {
-            reader.setConnection("161.6.141.148", 23); // Replace with your reader's IP address
+            reader.setConnection("161.6.219.3", 23); // Replace with your reader's IP address
             reader.setUsername("alien"); // Add your reader's username
             reader.setPassword("password");
             reader.open();
