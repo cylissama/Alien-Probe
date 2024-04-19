@@ -1,5 +1,7 @@
 # Alien P.R.O.B.E: an Android App Interface for Alien ALR-F800 RFID Reader
 
+## Read the docs here https://cylissama.github.io/Alien-Probe/
+
 ## Project Overview
 
 This is a group project for our senior project course, CS496, where we develop a system, app, or program for a client from our campus. Our client is from WKU's Parking and Transportation department, and our project aims to enhance the parking experience and ease of use for the employees on campus through technology.
