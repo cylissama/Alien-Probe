@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--WKU COLORS-->
+    <color name="lightest_grey">#EFEFEF</color>
+    <color name="lighter_grey">#CCCCCC</color>
+    <color name="wku_red">#B01E24</color>
+    <color name="wku_red_darker">#9A1A20</color>
+    <color name="text_grey">#555555</color>
 </resources>

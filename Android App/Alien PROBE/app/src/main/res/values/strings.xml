@@ -1,3 +1,48 @@
 <resources>
-    <string name="app_name">Alien PROBE</string>
+    <!-- App Name String -->
+    <string name="app_name">Alien P.R.O.B.E.</string>
+
+    <!-- Main string list -->
+    <string name="textStartScanning">Start Scanning</string>
+
+    <!-- universal -->
+    <string name="textBack">Back</string>
+    <string name="main_activity_text">Alien P.R.O.B.E</string>
+    <string name="scan_button_home">Scan</string>
+    <string name="save_button_text">Save</string>
+    <string name="delete_text">Delete</string>
+
+    <!-- Settings -->
+    <string name="setup_button_home">Setup</string>
+
+    <string name="reader_ip_text">Reader IP</string>
+    <string name="reader_ip_hint">000.000.00.00</string>
+
+    <string name="reader_port_text">Reader Port</string>
+    <string name="reader_port_hint">Port #</string>
+
+    <string name="reader_username_text">Username</string>
+    <string name="reader_username_hint">Enter Username</string>
+
+    <string name="reader_password_text">Password</string>
+    <string name="reader_password_hint">Enter Password</string>
+
+    <string name="network_radio_text">Network</string>
+    <string name="bluetooth_radio_text">Bluetooth</string>
+
+    <!-- Scanner -->
+    <string name="scan_operation_activity_text">Scan/Operation</string>
+    <string name="reads_box_text">RFID Reads</string>
+    <string name="stop_button_text">Stop</string>
+    <string name="scan_button_text">Scan</string>
+    <string name="clear_button_text">Clear</string>
+    <string name="view_tags_text">View Tags</string>
+
+    <!-- About -->
+    <string name="how_to_text">How to use this app</string>
+    <string name="explanation_text">First go into the setup page to set the IP, Port, Username, and Password that the Alien reader current has set.</string>
+    <string name="designed_by_text">Designed by: Cy Dixon, Nicholas Johnson, Alex Godsey, and Micheal Lynch</string>
+    <string name="setup_about_text">On the Setup screen, you need to set the IP address, Port number, Username and Password for the reader</string>
+    <string name="scanner_about_text1">On the Scanner screen, you can use the Scan button to issue the t command to the reader. This will return a list of tags and their EPCs and store any new tags in the database.</string>
+    <string name="scanner_about_text2">You can then tap the View Tags button to display a list of unique tags store in the database.</string>
 </resources>

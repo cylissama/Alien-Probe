@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/lightest_grey"
+    android:foregroundTint="#009E9BF6"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+
+ <androidx.constraintlayout.widget.ConstraintLayout
+     android:id="@+id/constraintLayout"
+     android:layout_width="392dp"
+     android:layout_height="239dp"
+     android:background="@color/wku_red_darker"
+     android:fadingEdge="horizontal"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="parent">
+
+  <TextView
+      android:id="@+id/app_name_text_box"
+      android:layout_width="293dp"
+      android:layout_height="78dp"
+      android:layout_marginStart="48dp"
+      android:layout_marginTop="60dp"
+      android:background="@drawable/mybutton"
+      android:backgroundTint="#00000000"
+      android:fontFamily="serif"
+      android:text="@string/app_name"
+      android:textColor="@color/white"
+      android:textSize="40dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/desc_main_page"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="56dp"
+      android:text="Precision RFID Operational Bridge for Efficiency"
+      android:textColor="@color/white"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/app_name_text_box"
+      app:layout_constraintVertical_bias="0.243" />
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="399dp"
+      android:layout_height="46dp"
+      android:background="@color/lighter_grey"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+ </androidx.constraintlayout.widget.ConstraintLayout>
+
+ <androidx.constraintlayout.widget.Guideline
+     android:id="@+id/guideline_center"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:background="@color/wku_red"
+     android:orientation="horizontal"
+     app:layout_constraintGuide_percent="0.5" />
+
+ <TextView
+     android:id="@+id/textView"
+     android:layout_width="96dp"
+     android:layout_height="30dp"
+     android:layout_marginTop="336dp"
+     android:text="@string/main_activity_text"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.498"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="@id/guideline_center" />
+
+ <Button
+     android:id="@+id/btnViewSetup"
+     android:layout_width="205dp"
+     android:layout_height="75dp"
+     android:layout_marginTop="25dp"
+     android:background="@drawable/mybutton"
+     android:text="@string/setup_button_home"
+     android:textColor="@color/white"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/guideline_center" />
+
+ <Button
+     android:id="@+id/btnViewScanner"
+     android:layout_width="205dp"
+     android:layout_height="75dp"
+     android:layout_marginTop="25dp"
+     android:background="@drawable/mybutton"
+     android:text="@string/scan_button_home"
+     android:textColor="@color/white"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/btnViewSetup" />
+
+ <Button
+     android:id="@+id/aboutButton"
+     android:layout_width="205dp"
+     android:layout_height="75dp"
+     android:layout_marginTop="24dp"
+     android:background="@drawable/mybutton"
+     android:text="About"
+     android:textColor="@color/white"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@id/btnViewScanner" />
+
+ <ImageView
+     android:id="@+id/imageView2"
+     android:layout_width="88dp"
+     android:layout_height="0dp"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:srcCompat="@drawable/wku_logo_2"
+     tools:layout_editor_absoluteY="162dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

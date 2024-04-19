@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/btnViewScanToMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightest_grey">
+
+    <TextView
+        android:id="@+id/readerIPText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:layout_weight="1"
+        android:text="@string/reader_ip_text"
+        android:textColor="@color/text_grey"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/readerIPInput"
+        android:gravity="center"
+        android:background="@drawable/edit_text_custom"
+        android:textColor="@color/text_grey"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/reader_ip_hint" />
+
+    <TextView
+        android:id="@+id/readerPortText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="133dp"
+        android:text="@string/reader_port_text"
+        android:textColor="@color/text_grey"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/readerPortInput"
+        android:gravity="center"
+        android:background="@drawable/edit_text_custom"
+        android:textColor="@color/text_grey"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/reader_port_hint"/>
+
+    <TextView
+        android:id="@+id/readerUsernameText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="212dp"
+        android:layout_weight="1"
+        android:text="@string/reader_username_text"
+        android:textColor="@color/text_grey"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/readerUsernameInput"
+        android:gravity="center"
+        android:background="@drawable/edit_text_custom"
+        android:textColor="@color/text_grey"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="240dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/reader_username_hint" />
+
+    <TextView
+        android:id="@+id/readerPasswordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="294dp"
+        android:layout_weight="1"
+        android:text="@string/reader_password_text"
+        android:textColor="@color/text_grey"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/readerPasswordInput"
+        android:gravity="center"
+        android:background="@drawable/edit_text_custom"
+        android:textColor="@color/text_grey"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="320dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/reader_password_hint"
+        />
+
+    <RadioGroup
+        android:layout_width="215dp"
+        android:layout_height="180dp"
+        android:layout_above="@+id/saveButton"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="370dp"
+        android:layout_marginBottom="13dp">
+
+        <RadioButton
+            android:id="@+id/radioNetwork"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/network_radio_text" />
+
+        <RadioButton
+            android:id="@+id/radioBluetooth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bluetooth_radio_text" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:background="@drawable/mybutton"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="120dp"
+        android:text="@string/save_button_text" />
+
+    <Button
+        android:id="@+id/btnViewSettingsToMain"
+        android:background="@drawable/mybutton"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:text="@string/textBack" />
+
+</RelativeLayout>
