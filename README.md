@@ -1,6 +1,7 @@
-# Alien P.R.O.B.E: an Android App Interface for Alien ALR-F800 RFID Reader
+# Alien P.R.O.B.E
+an Android App Interface for the Alien ALR-F800 RFID Reader
 
-## Read the docs here https://cylissama.github.io/Alien-Probe/
+## Read the <a href="https://cylissama.github.io/Alien-Probe/">Docs<a>
 
 ## Project Overview
 
@@ -12,12 +13,12 @@ The goal of this project is to create a RFID tag recognition system using the Al
 
 ## Client
 
-**Client:** Parking and Transportation Department, WKU
+**Client:** <a href="https://www.wku.edu/transportation/">Parking and Transportation Department, WKU<a>
 
 ## Hardware Used
 
-- Alien ALR F800 RFID Reader
-- Alien Scanner Antenna
+- <a href="https://www.alientechnology.com/products/readers/alr-f800/">Alien ALR-F800 RFID Reader<a>
+- <a href="https://www.alientechnology.com/products/antennas/alr-8697-8/">Alien ALR-8698 RFID Antenna<a>
 
 ## Project Details
 
