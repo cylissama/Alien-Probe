@@ -1,6 +1,0 @@
-﻿namespace AlphaScan
-{
-    class GPSUtil
-    {
-    }
-}

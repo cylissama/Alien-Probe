@@ -1,2 +1,0 @@
-# AlphaScan-GUI
-GUI
