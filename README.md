@@ -1,4 +1,4 @@
-# Alien P.R.O.B.E Android App Interface for Alien ALR-F800 RFID Reader
+# Alien P.R.O.B.E: an Android App Interface for Alien ALR-F800 RFID Reader
 
 ## Project Overview
 
