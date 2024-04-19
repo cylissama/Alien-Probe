@@ -1,4 +1,4 @@
-# Senior Software Project - CS496
+# Alien P.R.O.B.E Android App Interface for Alien ALR-F800 RFID Reader
 
 ## Project Overview
 
