@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<LotCount LotName="PS1" Zone="H1" StartTime="2019-09-03T15:10:38.5984838-05:00" EndTime="2019-09-03T15:25:30.1207786-05:00">
-  <Prefix name="20WS">8</Prefix>
-  <Prefix name="20FS3">143</Prefix>
-  <Prefix name="20C1">1</Prefix>
-  <Prefix name="20HS">1</Prefix>
-  <Prefix name="20H1">474</Prefix>
-  <Prefix name="20H5">2</Prefix>
-</LotCount>
