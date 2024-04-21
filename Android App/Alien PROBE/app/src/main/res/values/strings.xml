@@ -45,4 +45,5 @@
     <string name="setup_about_text">On the Setup screen, you need to set the IP address, Port number, Username and Password for the reader</string>
     <string name="scanner_about_text1">On the Scanner screen, you can use the Scan button to issue the t command to the reader. This will return a list of tags and their EPCs and store any new tags in the database.</string>
     <string name="scanner_about_text2">You can then tap the View Tags button to display a list of unique tags store in the database.</string>
+    <string name="delete">Delete</string>
 </resources>

@@ -1,29 +1,62 @@
-<!-- tag_item.xml -->
+ <!-- tag_item.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:orientation="horizontal"
-    android:padding="14dp"
-    android:background="@color/lighter_grey">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:padding="14dp">
+<!--the xmlns:app="http://schemas.android.com/apk/res-auto" statement is for the cards to work-->
 
-    <TextView
-        android:id="@+id/epcTextView"
+<!--    <TextView-->
+<!--        android:id="@+id/brewView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="14sp"/>-->
+
+<androidx.cardview.widget.CardView
+    android:id="@+id/tagContainer"
+    android:layout_margin="5sp"
+    app:cardBackgroundColor="@color/wku_red"
+    android:layout_gravity="center_horizontal"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="5sp"
+    app:cardMaxElevation="12dp"
+    app:cardPreventCornerOverlap="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp" />
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <TextView
+            android:id="@+id/tagView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10sp"
+            android:textColor="@color/white"
+            android:text="placeholder"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/mapButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mybutton"
+            android:text="Open Map"
+            android:layout_marginRight="10sp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:layout_weight="1"/>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/mapButton"
-        android:layout_width="75dp"
-        android:layout_height="38dp"
-        android:background="@drawable/mybutton"
-        android:text="Open Map"
-        android:textColor="@color/white"
-        android:textSize="10dp" />
+</androidx.cardview.widget.CardView>
 
 </LinearLayout>
+

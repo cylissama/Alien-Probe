@@ -3,6 +3,8 @@
 
 package com.example.alienprobe;
 
+import androidx.annotation.NonNull;
+
 public class TagModel {
     private int id;
     private String epc;
@@ -17,6 +19,7 @@ public class TagModel {
         this.latitude = latitude;
         this.time = time;
     }
+    @NonNull
     @Override
     public String toString() {
         return "tagModel{" +

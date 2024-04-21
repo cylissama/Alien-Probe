@@ -24,7 +24,7 @@ class ViewTagsActivity : AppCompatActivity() {
         dataBaseHelper = DataBaseHelper(this)
         val allTags = dataBaseHelper.getAllTags()
 
-        adapter = TagsAdapter(this, allTags)
+        adapter = TagsAdapter(this, allTags, dataBaseHelper)
         tagsRecyclerView.adapter = adapter
 
         //Back Button
