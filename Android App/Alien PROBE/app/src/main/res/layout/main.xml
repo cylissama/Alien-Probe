@@ -11,29 +11,30 @@
     android:gravity="center"
     android:orientation="horizontal">
 
-
  <androidx.constraintlayout.widget.ConstraintLayout
      android:id="@+id/constraintLayout"
-     android:layout_width="392dp"
-     android:layout_height="239dp"
-     android:background="@color/wku_red_darker"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginLeft="10sp"
+     android:layout_marginTop="30sp"
+     android:layout_marginRight="10sp"
+     android:background="@drawable/custom_constraint_layout"
      android:fadingEdge="horizontal"
      app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.0"
      app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintTop_toTopOf="parent">
 
   <TextView
       android:id="@+id/app_name_text_box"
-      android:layout_width="293dp"
-      android:layout_height="78dp"
-      android:layout_marginStart="48dp"
-      android:layout_marginTop="60dp"
-      android:background="@drawable/mybutton"
-      android:backgroundTint="#00000000"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="20sp"
       android:fontFamily="serif"
       android:text="@string/app_name"
       android:textColor="@color/white"
       android:textSize="40dp"
+      app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,6 +42,7 @@
       android:id="@+id/desc_main_page"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginTop="10sp"
       android:layout_marginBottom="56dp"
       android:text="Precision RFID Operational Bridge for Efficiency"
       android:textColor="@color/white"
@@ -49,16 +51,6 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/app_name_text_box"
       app:layout_constraintVertical_bias="0.243" />
-
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="399dp"
-      android:layout_height="46dp"
-      android:background="@color/lighter_grey"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
-
-  </androidx.constraintlayout.widget.ConstraintLayout>
 
  </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -119,11 +111,13 @@
 
  <ImageView
      android:id="@+id/imageView2"
-     android:layout_width="88dp"
-     android:layout_height="0dp"
+     android:layout_width="125dp"
+     android:layout_height="221dp"
+     app:layout_constraintBottom_toTopOf="@+id/btnViewSetup"
      app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
      app:srcCompat="@drawable/wku_logo_2"
-     tools:layout_editor_absoluteY="162dp" />
+     android:contentDescription="@string/wkulogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

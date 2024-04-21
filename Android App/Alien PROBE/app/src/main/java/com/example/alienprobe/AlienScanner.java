@@ -2,11 +2,7 @@ package com.example.alienprobe;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import com.alien.enterpriseRFID.reader.AlienClass1Reader;
-import com.alien.enterpriseRFID.reader.AbstractReader;
-
-
 import java.net.Socket;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -81,17 +77,16 @@ public class AlienScanner {
     }
 
     private void loadPreferences(Context context) {
-
         SharedPreferences sharedPreferences = context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE);
 
-        this.readerIP = sharedPreferences.getString("IP", "DefaultIP");
-        this.readerPort = sharedPreferences.getInt("Port", 23); // Assuming default port 23
-        this.readerUserName = sharedPreferences.getString("Username", "DefaultUsername");
-        this.readerPassword = sharedPreferences.getString("Password", "DefaultPassword");
+        readerIP = sharedPreferences.getString("IP", "DefaultIP");
+        readerPort = sharedPreferences.getInt("Port", 23); // Assuming default port 23
+        readerUserName = sharedPreferences.getString("Username", "DefaultUsername");
+        readerPassword = sharedPreferences.getString("Password", "DefaultPassword");
 
-        reader.setConnection(this.readerIP, this.readerPort);
-        reader.setUsername(this.readerUserName);
-        reader.setPassword(this.readerPassword);
+        reader.setConnection(readerIP, readerPort);
+        reader.setUsername(readerUserName);
+        reader.setPassword(readerPassword);
     }
     public String respond(){
         return "Hello";

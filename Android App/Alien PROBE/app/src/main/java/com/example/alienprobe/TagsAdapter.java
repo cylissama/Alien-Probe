@@ -81,7 +81,8 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
 
         TextView epc = dialog.findViewById(R.id.epcView);
 
-        epc.setText("EPC: " + tag.getEPC() + "\nLat: " + tag.getLatitude() + " Long: " + tag.getLongitude() + "\nTime: " + tag.getTime());
+        String textToSet = "EPC: " + tag.getEPC() + "\nLat: " + tag.getLatitude() + " Long: " + tag.getLongitude() + "\nTime: " + tag.getTime();
+        epc.setText(textToSet);
 
         delete.setOnClickListener(v -> {
             // Delete the brew from the database
@@ -119,7 +120,6 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
             epcTextView = itemView.findViewById(R.id.tagView);
             mapButton = itemView.findViewById(R.id.mapButton); // Initialize the button
             tagContainer = itemView.findViewById(R.id.tagContainer);
-
         }
     }
     public interface TagInteractionListener {

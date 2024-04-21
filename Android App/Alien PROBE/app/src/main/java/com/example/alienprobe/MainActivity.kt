@@ -11,6 +11,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
 
+        setupListeners()
+    }
+
+    private fun setupListeners() {
         val scannerStartButton = findViewById<Button>(R.id.btnViewScanner)
         scannerStartButton.setOnClickListener {
             val intent = Intent(this, ScannerActivity::class.java)

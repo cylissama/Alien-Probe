@@ -1,6 +1,4 @@
 //Tag DB Model
-
-
 package com.example.alienprobe;
 
 import androidx.annotation.NonNull;
@@ -8,9 +6,9 @@ import androidx.annotation.NonNull;
 public class TagModel {
     private int id;
     private String epc;
+    private String time;
     private final double longitude;
     private final double latitude;
-    private String time;
 
     public TagModel(int id, String epc, double longitude, double latitude, String time) {
         this.id = id;

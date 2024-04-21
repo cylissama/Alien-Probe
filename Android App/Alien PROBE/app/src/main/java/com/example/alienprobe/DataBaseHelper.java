@@ -83,8 +83,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 i++;
             } while (cursor.moveToNext());
         }
-        else {
-        }
 
         cursor.close();
         db.close();
