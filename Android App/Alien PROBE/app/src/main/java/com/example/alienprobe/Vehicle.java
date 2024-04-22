@@ -18,6 +18,17 @@ public class Vehicle {
     @SerializedName("Color")
     private String color;
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "id=" + id +
+                ", plate='" + plate + '\'' +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                '}';
+    }
+
     // Constructor
     public Vehicle(long id, String plate, String make, String model, String color) {
         this.id = id;

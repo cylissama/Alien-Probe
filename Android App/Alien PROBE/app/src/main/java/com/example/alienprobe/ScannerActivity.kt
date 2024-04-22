@@ -114,7 +114,7 @@ class ScannerActivity : AppCompatActivity() {
             val long: Double = lastLocation!!.longitude
             val lat: Double = lastLocation!!.latitude
             val time: String = currentTime
-            val tagModel: TagModel = TagModel(-1, "${tag.getEPC()}", long, lat, time)
+            val tagModel: TagModel = TagModel(-1, "${tag.getEPC()}", long, lat, time, tag.getVehicle().toString())
             val success = dataBaseHelper.addOne(tagModel)
             if (success) {
                 Log.d("Insertion", "new tag: ${tag.getEPC()} added.")

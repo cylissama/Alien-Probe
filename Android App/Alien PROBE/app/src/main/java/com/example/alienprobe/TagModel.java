@@ -9,13 +9,15 @@ public class TagModel {
     private String time;
     private final double longitude;
     private final double latitude;
+    private final String vehicle;
 
-    public TagModel(int id, String epc, double longitude, double latitude, String time) {
+    public TagModel(int id, String epc, double longitude, double latitude, String time, String vehicle) {
         this.id = id;
         this.epc = epc;
         this.longitude = longitude;
         this.latitude = latitude;
         this.time = time;
+        this.vehicle = vehicle;
     }
     @NonNull
     @Override
@@ -26,6 +28,7 @@ public class TagModel {
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
                 ", time=" + time +
+                ", vehicle=" + vehicle +
                 '}';
     }
     public int getId() {
@@ -44,4 +47,5 @@ public class TagModel {
     }
     public double getLatitude() { return this.latitude; }
     public double getLongitude() { return this.longitude; }
+    public String getVehicle() { return this.vehicle; }
 }

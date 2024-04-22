@@ -43,8 +43,6 @@ class AboutActivity : AppCompatActivity() {
         })
     }
 
-
-
     private fun setupListeners() {
         val backButton = findViewById<Button>(R.id.back_button)
         backButton.setOnClickListener {
