@@ -14,11 +14,7 @@ import java.util.List;
 import java.sql.DriverManager;
 import java.sql.Connection;
 
-
 public class AlienGUI extends JFrame {
-
-    Connection conn = databaseConnect();
-    AlienReader tagGetter = new AlienReader();
     DefaultListModel<String> listModel = new DefaultListModel<>();
     private Timer timer; // Timer to manage periodic updates
     private JLabel statusLabel; // Label to show the current status
@@ -48,28 +44,40 @@ public class AlienGUI extends JFrame {
         //textfields for the settings menu
         JLabel usernameLabel = new JLabel("Username");
         JTextField usernameTextField = new JTextField(20);
+
         JLabel passwordLabel = new JLabel("Password");
         JTextField passwordTextField = new JTextField(20);
+
         JLabel IPLabel = new JLabel("IP Address");
         JTextField IPTextField = new JTextField(20);
+
         JLabel portLabel = new JLabel("Port");
         JTextField portTextField = new JTextField(20);
+
+        JButton submitBtn = new JButton("Submit");
+
 
         settingsPanel.add(usernameLabel, gbc);
         gbc.gridy++; // Move to the next row
         settingsPanel.add(usernameTextField, gbc);
         gbc.gridy++; // Move to the next row
+
         settingsPanel.add(passwordLabel, gbc);
         gbc.gridy++;
         settingsPanel.add(passwordTextField, gbc);
         gbc.gridy++;
+
         settingsPanel.add(IPLabel, gbc);
         gbc.gridy++;
         settingsPanel.add(IPTextField, gbc);
         gbc.gridy++;
+
         settingsPanel.add(portLabel, gbc);
         gbc.gridy++;
         settingsPanel.add(portTextField, gbc);
+        gbc.gridy++;
+        settingsPanel.add(submitBtn, gbc);
+        gbc.gridy++;
 
         //READS
         JList<String> readsList = new JList<>(listModel);
@@ -108,17 +116,28 @@ public class AlienGUI extends JFrame {
 
         add(tabbedPane);
 
+        // listeners
+
+        submitBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AlienReader.readerUserName = usernameTextField.getText();
+                AlienReader.readerPassword = passwordTextField.getText();
+                AlienReader.readerIP = IPTextField.getText();
+                AlienReader.readerPort = Integer.parseInt(portTextField.getText());
+            }
+        });
+
         timer = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Add a new item to the list model every second
-                List<String> tagList = tagGetter.GetTagList();
+                List<String> tagList = AlienReader.GetTagList();
                 if (tagList == null) {
                     listModel.addElement("No Scans");
                 }
                 for(String tag : tagList) {
                     listModel.addElement(tag);
-                    insertRfidData(tag, new java.sql.Timestamp(System.currentTimeMillis()));
                 }
             }
         });
@@ -127,7 +146,7 @@ public class AlienGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (!timer.isRunning()) {
                     timer.start();
-                    statusLabel.setText("In Operation");
+                    statusLabel.setText("Working");
                 }
             }
         });
@@ -173,33 +192,6 @@ public class AlienGUI extends JFrame {
             System.out.println("Reads saved to file: " + fileName);
         } catch (IOException ex) {
             System.out.println("Error saving reads to file: " + ex.getMessage());
-        }
-    }
-    public Connection databaseConnect(){
-        String url = "jdbc:mysql://localhost:3306/alienbase";
-        String username = "root";
-        String password = "Dreamville01";
-        Connection conn;
-
-        {
-            try {
-                conn = DriverManager.getConnection(url, username, password);
-                System.out.println("Connected");
-            } catch (SQLException e) {
-                System.out.println("Error");
-                throw new RuntimeException(e);
-            }
-        }
-        return conn;
-    }
-    private void insertRfidData(String rfidId, java.sql.Timestamp timestamp) {
-        String insertSql = "INSERT INTO rfid_logs (rfid_id, timestamp) VALUES (?, ?);";
-        try (PreparedStatement pstmt = conn.prepareStatement(insertSql)) {
-            pstmt.setString(1, rfidId);
-            pstmt.setTimestamp(2, timestamp);
-            pstmt.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println("Insert RFID Data Error: " + ex.getMessage());
         }
     }
 
