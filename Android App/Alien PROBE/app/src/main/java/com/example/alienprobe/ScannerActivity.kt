@@ -23,6 +23,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import java.util.Locale
@@ -110,11 +112,23 @@ class ScannerActivity : AppCompatActivity() {
         /// ADD SOME COROUTINES HERE AS SPECIFIED BY CHATGPT ///
         val currentTime = getCurrentTime()
         val dataBaseHelper: DataBaseHelper = DataBaseHelper(this)
+
+        val epc = tag.epc.takeLast(5).toIntOrNull()
+        val vehicles: LiveData<List<Vehicle>> = fetchVehicles(epc)
+        //
+        var firstVehicle: Vehicle? = null
+        //
+        vehicles.observe(this, Observer { vehicles ->
+            if (!vehicles.isNullOrEmpty()) {
+                firstVehicle = vehicles.first()
+            }
+        })
+
         try {
             val long: Double = lastLocation!!.longitude
             val lat: Double = lastLocation!!.latitude
             val time: String = currentTime
-            val tagModel: TagModel = TagModel(-1, "${tag.getEPC()}", long, lat, time, tag.getVehicle().toString())
+            val tagModel: TagModel = TagModel(-1, "${tag.getEPC()}", long, lat, time, firstVehicle.toString())
             val success = dataBaseHelper.addOne(tagModel)
             if (success) {
                 Log.d("Insertion", "new tag: ${tag.getEPC()} added.")

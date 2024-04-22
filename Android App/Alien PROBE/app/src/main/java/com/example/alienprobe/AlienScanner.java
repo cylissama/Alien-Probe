@@ -50,7 +50,6 @@ public class AlienScanner {
     public List<RFIDTag> GetTagList() {
         List<RFIDTag> outputTags = new ArrayList<>();
 
-        callAPI();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -91,53 +90,6 @@ public class AlienScanner {
         return outputTags;
     }
 
-    public void callAPI() {
-        fetchVehicles(12345, new VehicleCallback() {
-            @Override
-            public void onVehicleFetched(Vehicle vehicle) {
-                // Handle the fetched vehicle
-                Log.d("Vehicle fetched: ", vehicle.getMake() + " " + vehicle.getModel() + " " + vehicle.getPlate());
-            }
-
-            @Override
-            public void onError(String message) {
-                // Handle error
-                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public interface VehicleCallback {
-        void onVehicleFetched(Vehicle vehicle);
-        void onError(String message);
-    }
-
-    private void fetchVehicles(int permitId, VehicleCallback callback) {
-        RetrofitClient.getApiService().getVehicleListByPermit(permitId).enqueue(new Callback<List<Vehicle>>() {
-            @Override
-            public void onResponse(@NonNull Call<List<Vehicle>> call, @NonNull Response<List<Vehicle>> response) {
-                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
-                    Vehicle firstVehicle = response.body().get(0);
-                    callback.onVehicleFetched(firstVehicle);
-                } else {
-                    String errorMessage = "Failed to fetch vehicles: No data received";
-                    if (response.errorBody() != null) {
-                        try {
-                            errorMessage = response.errorBody().string();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    callback.onError(errorMessage);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Vehicle>> call, Throwable t) {
-                callback.onError("Error fetching vehicles: " + t.getMessage());
-            }
-        });
-    }
 
     private void loadPreferences(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE);
