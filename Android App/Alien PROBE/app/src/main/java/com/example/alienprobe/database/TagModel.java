@@ -1,7 +1,8 @@
 //Tag DB Model
-package com.example.alienprobe;
+package com.example.alienprobe.database;
 
 import androidx.annotation.NonNull;
+import com.example.alienprobe.*;
 
 public class TagModel {
     private int id;

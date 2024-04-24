@@ -1,4 +1,6 @@
-package com.example.alienprobe;
+package com.example.alienprobe.api;
+
+import com.example.alienprobe.java.Vehicle;
 
 import java.util.List;
 

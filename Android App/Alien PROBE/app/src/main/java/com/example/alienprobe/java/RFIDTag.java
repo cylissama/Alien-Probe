@@ -1,6 +1,6 @@
 //Tag Model for ScrollView
 
-package com.example.alienprobe;
+package com.example.alienprobe.java;
 
 public class RFIDTag {
     private String epc;

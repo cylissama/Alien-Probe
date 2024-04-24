@@ -1,16 +1,16 @@
-package com.example.alienprobe
+package com.example.alienprobe.presentation
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.alienprobe.api.ApiService
+import com.example.alienprobe.R
+import com.example.alienprobe.java.Vehicle
+import com.example.alienprobe.api.fetchVehicles
 
 class AboutActivity : AppCompatActivity() {
 

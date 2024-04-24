@@ -1,8 +1,9 @@
-package com.example.alienprobe
+package com.example.alienprobe.api
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.alienprobe.java.Vehicle
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,4 +34,3 @@ fun fetchVehicles(permitId: Int?): LiveData<List<Vehicle>> {
     }
     return vehiclesLiveData
 }
-

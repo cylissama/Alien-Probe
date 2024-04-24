@@ -1,4 +1,4 @@
-package com.example.alienprobe
+package com.example.alienprobe.presentation
 
 import android.content.Intent
 import android.net.Uri
@@ -7,6 +7,8 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.alienprobe.database.DataBaseHelper
+import com.example.alienprobe.R
 
 class ViewTagsActivity : AppCompatActivity() {
 
@@ -24,7 +26,11 @@ class ViewTagsActivity : AppCompatActivity() {
         dataBaseHelper = DataBaseHelper(this)
         val allTags = dataBaseHelper.getAllTags()
 
-        adapter = TagsAdapter(this, allTags, dataBaseHelper)
+        adapter = TagsAdapter(
+            this,
+            allTags,
+            dataBaseHelper
+        )
         tagsRecyclerView.adapter = adapter
 
         //Back Button

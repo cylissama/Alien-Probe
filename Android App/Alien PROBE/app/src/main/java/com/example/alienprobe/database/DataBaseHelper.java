@@ -1,4 +1,4 @@
-package com.example.alienprobe;
+package com.example.alienprobe.database;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.example.alienprobe;
+package com.example.alienprobe.api;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

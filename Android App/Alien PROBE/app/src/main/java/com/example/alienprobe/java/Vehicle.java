@@ -1,6 +1,7 @@
-package com.example.alienprobe;
+package com.example.alienprobe.java;
 
 import com.google.gson.annotations.SerializedName;
+import com.example.alienprobe.*;
 
 public class Vehicle {
     @SerializedName("Id")

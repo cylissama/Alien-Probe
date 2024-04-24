@@ -1,22 +1,13 @@
-package com.example.alienprobe;
+package com.example.alienprobe.java;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import com.alien.enterpriseRFID.reader.AlienClass1Reader;
 
-import java.io.IOException;
 import java.net.Socket;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 //PASS CONTEXT WHEN CREATING THIS BY USING 'this'
 public class AlienScanner {

@@ -1,4 +1,4 @@
-package com.example.alienprobe
+package com.example.alienprobe.presentation
 
 import android.content.Context
 import android.content.Intent
@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.alienprobe.databinding.SettingsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.example.alienprobe.*
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -47,7 +48,7 @@ class SettingsActivity : AppCompatActivity() {
             loadPreferences()
         }
     }
-    private fun savePreferences(username: String, password: String, ip: String, port: Int,) {
+    private fun savePreferences(username: String, password: String, ip: String, port: Int) {
         val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("Username",username)

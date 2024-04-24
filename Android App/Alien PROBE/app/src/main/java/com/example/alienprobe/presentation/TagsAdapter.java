@@ -1,4 +1,4 @@
-package com.example.alienprobe;
+package com.example.alienprobe.presentation;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -19,13 +19,17 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.alienprobe.R;
+import com.example.alienprobe.database.DataBaseHelper;
+import com.example.alienprobe.database.TagModel;
+
 import java.util.List;
 import java.util.Objects;
 
 public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
-    private List<TagModel> tagsList;
-    private LayoutInflater inflater;
-    private Context context; // Added to use for launching an Intent
+    private final List<TagModel> tagsList;
+    private final LayoutInflater inflater;
+    private final Context context; // Added to use for launching an Intent
     private final DataBaseHelper dbHelper;
 
     public TagsAdapter(Context context, List<TagModel> tagsList, DataBaseHelper dbHelper) {

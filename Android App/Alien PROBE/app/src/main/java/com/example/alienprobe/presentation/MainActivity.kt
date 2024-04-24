@@ -1,9 +1,10 @@
-package com.example.alienprobe
+package com.example.alienprobe.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import android.content.Intent
 import android.widget.Button
+import com.example.alienprobe.R
 
 class MainActivity : ComponentActivity() {
 
