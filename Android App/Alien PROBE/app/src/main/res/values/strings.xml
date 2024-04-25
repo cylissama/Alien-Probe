@@ -46,7 +46,7 @@
     <string name="scanner_about_text1">On the Scanner screen, you can use the Scan button or toggle switch to issue the t command to the reader. This will return a list of tags and their EPCs and store any new tags in the database.</string>
     <string name="scanner_about_text2">You can then tap the View Tags button to display a list of unique tags store in the database.</string>
     <string name="delete">Delete</string>
-    <string name="choose">Choose</string>
+    <string name="tagData">RFID Tag Data</string>
     <string name="epc">Epc</string>
     <string name="wkulogo">WKULOGO</string>
     <string name="setup_screen">Setup Screen</string>

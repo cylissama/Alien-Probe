@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="@string/setup_screen"
         android:textAlignment="center"
-        android:layout_marginTop="15sp"
+        android:layout_marginTop="5sp"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -31,8 +31,8 @@
         android:id="@+id/explanation_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:layout_marginBottom="20sp"
+        android:layout_marginTop="5sp"
+        android:layout_marginBottom="5sp"
         android:text="@string/setup_about_text" />
 
     <TextView
@@ -48,8 +48,8 @@
         android:id="@+id/scanner_about_box_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:layout_marginBottom="10sp"
+        android:layout_marginTop="5sp"
+        android:layout_marginBottom="5sp"
         android:text="@string/scanner_about_text1" />
 
     <TextView
@@ -63,7 +63,7 @@
         android:id="@+id/designed_by_text_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20sp"
+        android:layout_marginBottom="10sp"
         android:text="@string/designed_by_text" />
 
     <ImageView
@@ -75,7 +75,7 @@
 
     <Button
         android:id="@+id/back_button"
-        android:layout_marginTop="40sp"
+        android:layout_marginTop="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/back"

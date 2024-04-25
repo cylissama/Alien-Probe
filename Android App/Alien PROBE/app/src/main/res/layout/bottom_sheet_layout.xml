@@ -4,13 +4,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="10sp"
+    android:layout_marginRight="10sp"
     android:background="@drawable/dialog_box">
     <TextView
         android:id="@+id/chooseTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="@string/choose"
+        android:text="@string/tagData"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"/>
