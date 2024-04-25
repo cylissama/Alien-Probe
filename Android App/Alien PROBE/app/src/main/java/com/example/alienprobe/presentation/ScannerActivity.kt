@@ -56,12 +56,10 @@ class ScannerActivity : AppCompatActivity() {
 
     }
     private fun setupUI() {
-        //get latest gps values
         getLastLocation()
         //make sure to initialize this here or else scannerActivity will crash
         val reader = AlienScanner(this)
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
-        /// BUTTON LISTENERS ///
         //back button
         val buttonClick = findViewById<Button>(R.id.btnViewScanToMain)
         buttonClick.setOnClickListener {
@@ -102,8 +100,6 @@ class ScannerActivity : AppCompatActivity() {
                 // Handle what to do when toggle is OFF if needed
             }
         }
-
-
         // getList button
         val getList = findViewById<Button>(R.id.getTagListButton)
         getList.setOnClickListener {
@@ -116,7 +112,7 @@ class ScannerActivity : AppCompatActivity() {
         }
     }
     private fun addTagToDB(tag: RFIDTag) {
-        /// ADD SOME COROUTINES HERE AS SPECIFIED BY CHATGPT ///
+        // thread this to improve performance
         val currentTime = getCurrentTime()
         val dataBaseHelper: DataBaseHelper =
             DataBaseHelper(this)
@@ -189,11 +185,10 @@ class ScannerActivity : AppCompatActivity() {
             it.release()
         }
     }
-    private fun getCurrentTime():  String {
+    private fun getCurrentTime(): String {
         val currentTime = Calendar.getInstance()
         val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-        val formattedTime = dateFormat.format(currentTime.time)
-        return formattedTime
+        return dateFormat.format(currentTime.time)
     }
     private fun getLastLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -253,7 +248,7 @@ class ScannerActivity : AppCompatActivity() {
     private fun showPermissionDeniedExplanation() {
         AlertDialog.Builder(this)
             .setMessage("This app requires location permissions to scan and associate tags with their locations. Please allow location access.")
-            .setPositiveButton("OK") { dialog, which ->
+            .setPositiveButton("OK") { _, _ ->
                 checkAndRequestLocationPermissions()
             }
             .setNegativeButton("Cancel", null)

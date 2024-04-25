@@ -33,7 +33,7 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
     private final DataBaseHelper dbHelper;
 
     public TagsAdapter(Context context, List<TagModel> tagsList, DataBaseHelper dbHelper) {
-        this.context = context; // Initialize context
+        this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.tagsList = tagsList;
         this.dbHelper = dbHelper;
@@ -53,8 +53,6 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
 
         holder.epcTextView.setText(text);
         holder.tagContainer.setOnClickListener(v -> showDialog(tag));
-
-
         // Set the click listener for the mapButton instead of epcTextView
         holder.mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,34 +97,26 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
             } else {
                 Toast.makeText(inflater.getContext(), "Failed to delete tag", Toast.LENGTH_SHORT).show();
             }
-            dialog.dismiss(); // Close the dialog
+            dialog.dismiss();
         });
-
-
         dialog.show();
         Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setGravity(Gravity.CENTER);
-
     }
-
-
     @Override
     public int getItemCount() {
         return tagsList.size();
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView epcTextView;
-        Button mapButton; // Reference to the map button
+        Button mapButton;
         CardView tagContainer;
         ViewHolder(View itemView) {
             super(itemView);
             epcTextView = itemView.findViewById(R.id.tagView);
-            mapButton = itemView.findViewById(R.id.mapButton); // Initialize the button
+            mapButton = itemView.findViewById(R.id.mapButton);
             tagContainer = itemView.findViewById(R.id.tagContainer);
         }
-    }
-    public interface TagInteractionListener {
-        void onDeleteTag(String tagId);
     }
 }

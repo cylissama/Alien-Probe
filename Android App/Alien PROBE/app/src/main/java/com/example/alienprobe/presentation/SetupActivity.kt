@@ -66,7 +66,6 @@ class SetupActivity : AppCompatActivity() {
         editor.putString("IP",ip)
         editor.putInt("Port",port)
         editor.apply()
-        //Toast.makeText(this@SetupActivity, sharedPreferences.getInt("conn",0),Toast.LENGTH_LONG).show()
     }
     private fun loadPreferences() {
         val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
