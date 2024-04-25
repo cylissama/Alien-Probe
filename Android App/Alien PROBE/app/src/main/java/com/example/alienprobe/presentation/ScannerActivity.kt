@@ -116,6 +116,7 @@ class ScannerActivity : AppCompatActivity() {
         val dataBaseHelper: DataBaseHelper =
             DataBaseHelper(this)
 
+        /* Uncomment this when needed to use api service for tag info
         val epc = tag.epc.takeLast(5).toIntOrNull()
         val vehicles: LiveData<List<Vehicle>> = fetchVehicles(epc)
         //
@@ -126,6 +127,10 @@ class ScannerActivity : AppCompatActivity() {
                 firstVehicle = vehicles.first()
             }
         })
+        */
+
+        //temp car name
+        var firstVehicle = "Lightning McQueen"
 
         try {
             val long: Double = lastLocation!!.longitude

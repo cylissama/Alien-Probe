@@ -24,6 +24,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
 
+        obtainPrefs()
         initializePermissions()
 
         setupListeners()
