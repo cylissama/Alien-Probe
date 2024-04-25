@@ -20,26 +20,38 @@ class ViewTagsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_tags)
 
+        setupRecycler()
+
+        setDataBaseHelper()
+
+        setupAdapter()
+
+        setupListeners()
+    }
+    private fun setupRecycler() {
         tagsRecyclerView = findViewById(R.id.tagsRecyclerView)
         tagsRecyclerView.layoutManager = LinearLayoutManager(this)
 
+    }
+    private fun setDataBaseHelper() {
         dataBaseHelper = DataBaseHelper(this)
-        val allTags = dataBaseHelper.getAllTags()
-
+    }
+    private fun setupAdapter() {
+        val allTags = dataBaseHelper.allTags
         adapter = TagsAdapter(
             this,
             allTags,
             dataBaseHelper
         )
         tagsRecyclerView.adapter = adapter
-
-        //Back Button
+    }
+    private fun setupListeners() {
         val backButton = findViewById<Button>(R.id.backButtonTagView)
         backButton.setOnClickListener {
             val intent = Intent(this, ScannerActivity::class.java)
             startActivity(intent)
         }
-        //Map Button
+        // this button was for test purposes
         val mapButton = findViewById<Button>(R.id.mapsButton)
         mapButton.setOnClickListener {
             openGoogleMaps(37.4220, -122.0841) // Coordinates for Googleplex
@@ -64,11 +76,5 @@ class ViewTagsActivity : AppCompatActivity() {
             startActivity(browserIntent)
         }
     }
-
-    fun onDeleteTag(tagId: String?) {
-        dataBaseHelper.deleteTag(tagId)
-        // Update your adapter's data set and refresh the RecyclerView as needed
-    }
-
 }
 

@@ -13,14 +13,13 @@ import com.example.alienprobe.java.Vehicle
 import com.example.alienprobe.api.fetchVehicles
 
 class AboutActivity : AppCompatActivity() {
-
-    private lateinit var apiService: ApiService
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.about)
 
         setupListeners()
-
+    }
+    private fun grabVehicle() {
         val id = 101234
         val vehicles: LiveData<List<Vehicle>> = fetchVehicles(id)
         vehicles.observe(this, Observer { vehicles ->
@@ -28,8 +27,8 @@ class AboutActivity : AppCompatActivity() {
             vehicles?.forEach { vehicle ->
                 Log.d("Vehicle", "Make: ${vehicle.make}, Model: ${vehicle.model}, Plate: ${vehicle.plate}")
             }
-        })    }
-
+        })
+    }
     private fun setupListeners() {
         val backButton = findViewById<Button>(R.id.back_button)
         backButton.setOnClickListener {

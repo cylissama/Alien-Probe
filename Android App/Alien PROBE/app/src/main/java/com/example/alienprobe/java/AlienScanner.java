@@ -16,11 +16,11 @@ public class AlienScanner {
     public static String readerUserName;
     public static String readerPassword;
     public static AlienClass1Reader reader = new AlienClass1Reader();
-    private final Context context;
 
     public AlienScanner(Context context) {
-        this.context = context; loadPreferences(context);
+        loadPreferences(context);
     }
+    // openReader and closeReader are custom for testing
     public void openReader(){
         try {
             reader.setConnection(readerIP, readerPort);
@@ -36,52 +36,44 @@ public class AlienScanner {
         reader.close();
         System.out.println("Connection Closed.");
     }
-
-
     public List<RFIDTag> GetTagList() {
         List<RFIDTag> outputTags = new ArrayList<>();
+        new Thread(() -> {
+            try {
+                Socket socket = new Socket(readerIP, readerPort);
+                reader.setUsername(readerUserName);
+                reader.setPassword(readerPassword);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Socket socket = new Socket(readerIP, readerPort);
-                    reader.setUsername(readerUserName);
-                    reader.setPassword(readerPassword);
+                if (reader.isValidateOpen()) {
+                    reader.open();
+                    System.out.println("connection opened");
 
-                    if (reader.isValidateOpen()) {
-                        reader.open();
-                        System.out.println("connection opened");
+                    Thread.sleep(100);
 
-                        Thread.sleep(100);
+                    String commandOutput = reader.doReaderCommand("t");
 
-                        String commandOutput = reader.doReaderCommand("t");
+                    System.out.println(commandOutput);
+                    List<String> outputLines = Arrays.stream(commandOutput.split("\\r?\\n"))
+                            .collect(Collectors.toList());
 
-                        System.out.println(commandOutput);
-                        List<String> outputLines = Arrays.stream(commandOutput.split("\\r?\\n"))
-                                .collect(Collectors.toList());
+                    for (String line : outputLines) {
+                        // Assuming each line represents an RFID tag
+                        RFIDTag tag = new RFIDTag(line);
 
-                        for (String line : outputLines) {
-                            // Assuming each line represents an RFID tag
-                            RFIDTag tag = new RFIDTag(line);
-
-                            outputTags.add(tag);
-                        }
-                        reader.close();
-                        System.out.println("connection closed");
-                        socket.close();
+                        outputTags.add(tag);
                     }
-
-                } catch (Exception e) {
-                    System.out.println(e);
-                    e.printStackTrace();
+                    reader.close();
+                    System.out.println("connection closed");
+                    socket.close();
                 }
+
+            } catch (Exception e) {
+                System.out.println(e);
+                e.printStackTrace();
             }
         }).start();
         return outputTags;
     }
-
-
     private void loadPreferences(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE);
 
@@ -93,10 +85,5 @@ public class AlienScanner {
         reader.setConnection(readerIP, readerPort);
         reader.setUsername(readerUserName);
         reader.setPassword(readerPassword);
-    }
-    public String respond(){
-        return "Hello";
-    }
-    public static void main(String[] args) {
     }
 }

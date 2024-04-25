@@ -1,7 +1,8 @@
 package com.example.alienprobe.java;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
-import com.example.alienprobe.*;
 
 public class Vehicle {
     @SerializedName("Id")
@@ -19,6 +20,7 @@ public class Vehicle {
     @SerializedName("Color")
     private String color;
 
+    @NonNull
     @Override
     public String toString() {
         return "Vehicle{" +
