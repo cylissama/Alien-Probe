@@ -53,7 +53,6 @@ class ScannerActivity : AppCompatActivity() {
         checkAndRequestLocationPermissions()
 
         setupUI()
-
     }
     private fun setupUI() {
         getLastLocation()
