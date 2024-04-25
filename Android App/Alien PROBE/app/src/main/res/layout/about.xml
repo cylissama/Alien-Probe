@@ -1,119 +1,86 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.AboutActivity"
-    android:background="@color/lightest_grey">
+    android:orientation="vertical"
+    android:background="@color/lightest_grey"
+    android:padding="20sp"
+    tools:context=".presentation.AboutActivity">
 
     <TextView
         android:id="@+id/how_to_box"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:text="@string/how_to_text"
         android:textAlignment="center"
         android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/setup_about_box"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Setup Screen"
+        android:text="@string/setup_screen"
         android:textAlignment="center"
+        android:layout_marginTop="15sp"
         android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/how_to_box" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/explanation_box"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/setup_about_text"
-        app:layout_constraintTop_toBottomOf="@id/setup_about_box"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="20sp"
+        android:text="@string/setup_about_text" />
 
     <TextView
         android:id="@+id/scanner_about_box"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Scanner Screen"
+        android:text="@string/scanner_screen"
         android:textAlignment="center"
         android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/explanation_box" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/scanner_about_box_details"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/scanner_about_text1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scanner_about_box" />
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="10sp"
+        android:text="@string/scanner_about_text1" />
 
     <TextView
         android:id="@+id/scanner_about_box_details2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/scanner_about_text2"
-        app:layout_constraintTop_toBottomOf="@id/scanner_about_box_details"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginBottom="10sp"
+        android:text="@string/scanner_about_text2" />
 
     <TextView
         android:id="@+id/designed_by_text_box"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/designed_by_text"
-        app:layout_constraintTop_toBottomOf="@id/scanner_about_box_details2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-
-
-    <Button
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Back"
-        android:textColor="@color/white"
-        android:background="@drawable/mybutton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="20sp"
+        android:text="@string/designed_by_text" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="210dp"
-        android:layout_height="151dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/designed_by_text_box"
+        android:layout_width="wrap_content"
+        android:layout_height="200sp"
+        android:layout_gravity="center_horizontal"
         app:srcCompat="@drawable/alien_probe_logo" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/back_button"
+        android:layout_marginTop="40sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:textColor="@color/white"
+        android:background="@drawable/mybutton"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

@@ -51,11 +51,6 @@ class ViewTagsActivity : AppCompatActivity() {
             val intent = Intent(this, ScannerActivity::class.java)
             startActivity(intent)
         }
-        // this button was for test purposes
-        val mapButton = findViewById<Button>(R.id.mapsButton)
-        mapButton.setOnClickListener {
-            openGoogleMaps(37.4220, -122.0841) // Coordinates for Googleplex
-        }
     }
     fun openGoogleMaps(latitude: Double, longitude: Double) {
         // Create a Uri from an intent string. Use the result to create an Intent.
