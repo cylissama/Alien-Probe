@@ -41,7 +41,7 @@
             android:name=".presentation.ScannerActivity"
             android:exported="true" />
         <activity
-            android:name=".presentation.SettingsActivity"
+            android:name=".presentation.SetupActivity"
             android:exported="true" />
         <activity
             android:name=".presentation.MainActivity"

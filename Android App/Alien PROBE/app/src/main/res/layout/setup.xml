@@ -110,29 +110,6 @@
         android:hint="@string/reader_password_hint"
         />
 
-    <RadioGroup
-        android:id="@+id/connectionRadioGroup"
-        android:layout_width="215dp"
-        android:layout_height="180dp"
-        android:layout_above="@+id/saveButton"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="370dp"
-        android:layout_marginBottom="13dp">
-
-        <RadioButton
-            android:id="@+id/radioNetwork"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/network_radio_text" />
-
-        <RadioButton
-            android:id="@+id/radioBluetooth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/bluetooth_radio_text" />
-    </RadioGroup>
-
     <Button
         android:id="@+id/saveButton"
         android:background="@drawable/mybutton"
@@ -145,7 +122,7 @@
         android:text="@string/save_button_text" />
 
     <Button
-        android:id="@+id/btnViewSettingsToMain"
+        android:id="@+id/backBtn"
         android:background="@drawable/mybutton"
         android:textColor="@color/white"
         android:layout_width="wrap_content"
