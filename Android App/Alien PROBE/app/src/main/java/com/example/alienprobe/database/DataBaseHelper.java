@@ -1,4 +1,4 @@
-package com.example.alienprobe;
+package com.example.alienprobe.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -19,6 +19,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_LAT_DOUBLE = "LATITUDE";
     public static final String COLUMN_LONG_DOUBLE = "LONGITUDE";
     public static final String COLUMN_TIME = "TIME";
+    public static final String COLUMN_VEHICLE = "VEHICLE";
     public DataBaseHelper(@Nullable Context context) {
         super(context, "RF" + COLUMN_ID + "Tag.db", null, 1);
     }
@@ -29,7 +30,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 COLUMN_EPC_STRING + " TEXT NOT NULL UNIQUE, " +
                 COLUMN_LONG_DOUBLE + " DOUBLE NOT NULL, " +
                 COLUMN_LAT_DOUBLE + " DOUBLE NOT NULL, " +
-                COLUMN_TIME + " TEXT NOT NULL)";
+                COLUMN_TIME + " TEXT NOT NULL, " +
+                COLUMN_VEHICLE + " TEXT NOT NULL)";
         db.execSQL(createTableStatement);
     }
     @Override
@@ -42,6 +44,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_LAT_DOUBLE, tag.getLongitude());
         cv.put(COLUMN_LONG_DOUBLE, tag.getLatitude());
         cv.put(COLUMN_TIME, tag.getTime());
+        cv.put(COLUMN_VEHICLE, tag.getVehicle().toString());
 
         try {
             // insertOrThrow() will throw SQLiteConstraintException if a UNIQUE constraint is violated
@@ -74,8 +77,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 double longitude = cursor.getDouble(2);
                 double latitude = cursor.getDouble(3);
                 String time = cursor.getString(4);
+                String vehicle = cursor.getString(5);
 
-                TagModel tmpTag = new TagModel(tagID, epcString, longitude, latitude, time);
+                TagModel tmpTag = new TagModel(tagID, epcString, longitude, latitude, time, vehicle);
                 System.out.println("New tag create with id: " + tmpTag.getId() + " epc: " + tmpTag.getEPC());
 
                 returnList.add(i,tmpTag);

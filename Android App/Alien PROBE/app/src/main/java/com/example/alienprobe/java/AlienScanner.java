@@ -1,8 +1,10 @@
-package com.example.alienprobe;
+package com.example.alienprobe.java;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
 import com.alien.enterpriseRFID.reader.AlienClass1Reader;
+
 import java.net.Socket;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -14,9 +16,10 @@ public class AlienScanner {
     public static String readerUserName;
     public static String readerPassword;
     public static AlienClass1Reader reader = new AlienClass1Reader();
+    private final Context context;
 
     public AlienScanner(Context context) {
-        loadPreferences(context);
+        this.context = context; loadPreferences(context);
     }
     public void openReader(){
         try {
@@ -33,8 +36,11 @@ public class AlienScanner {
         reader.close();
         System.out.println("Connection Closed.");
     }
+
+
     public List<RFIDTag> GetTagList() {
         List<RFIDTag> outputTags = new ArrayList<>();
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -56,7 +62,6 @@ public class AlienScanner {
                                 .collect(Collectors.toList());
 
                         for (String line : outputLines) {
-
                             // Assuming each line represents an RFID tag
                             RFIDTag tag = new RFIDTag(line);
 
@@ -75,6 +80,7 @@ public class AlienScanner {
         }).start();
         return outputTags;
     }
+
 
     private void loadPreferences(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE);
