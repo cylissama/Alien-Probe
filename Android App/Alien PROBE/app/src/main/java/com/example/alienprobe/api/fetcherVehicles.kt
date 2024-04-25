@@ -11,6 +11,7 @@ import retrofit2.Response
 fun fetchVehicles(permitId: Int?): LiveData<List<Vehicle>> {
     val vehiclesLiveData = MutableLiveData<List<Vehicle>>()
     if (permitId != null) {
+        //obtain permit info from RetrofitClient API call
         RetrofitClient.getApiService().getVehicleListByPermit(permitId).enqueue(object :
             Callback<List<Vehicle>> {
             override fun onResponse(call: Call<List<Vehicle>>, response: Response<List<Vehicle>>) {

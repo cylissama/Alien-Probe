@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String RFIDTAG_TABLE = "RFIDTAG_TABLE";
+
+    //DB Fields
     public static final String COLUMN_ID = "ID";
     public static final String COLUMN_EPC_STRING = "EPC_STRING";
     public static final String COLUMN_LAT_DOUBLE = "LATITUDE";
@@ -23,6 +25,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public DataBaseHelper(@Nullable Context context) {
         super(context, "RF" + COLUMN_ID + "Tag.db", null, 1);
     }
+
+    //Create SQLite DB for holding RFIDTag info data
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement = "CREATE TABLE " + RFIDTAG_TABLE + " (" +
@@ -34,8 +38,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 COLUMN_VEHICLE + " TEXT NOT NULL)";
         db.execSQL(createTableStatement);
     }
+
+    //updates DB
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+
+    //Add TagModel to DB (This is info from the ScannerActivity.kt file)
     public boolean addOne(TagModel tag) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -57,10 +65,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             db.close();
         }
     }
+
+    //Tag delete occurs inside of TagAdapter view
     public boolean deleteTag(String tagId) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(RFIDTAG_TABLE, "id = ?", new String[]{tagId}) > 0;
     }
+
+    //Used inside of ViewTagsActivity.kt
     public List<TagModel> getAllTags() {
         List<TagModel> returnList = new ArrayList<>();
 

@@ -9,6 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface ApiService {
+    //Get data from DB for vehicle permit information - Vehicle info & permitID
     @GET("Lookup/GetVehicleListByPermit")
     Call<List<Vehicle>> getVehicleListByPermit(@Query("PermitNumber") int permitId);
 }
