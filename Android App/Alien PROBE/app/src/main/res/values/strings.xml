@@ -49,4 +49,7 @@
     <string name="choose">Choose</string>
     <string name="epc">Epc</string>
     <string name="wkulogo">WKULOGO</string>
+    <string name="setup_screen">Setup Screen</string>
+    <string name="scanner_screen">Scanner Screen</string>
+    <string name="back">Back</string>
 </resources>
