@@ -11,6 +11,11 @@ This is a group project for our senior project course, CS496, where we develop a
 
 The goal of this project is to create a RFID tag recognition system using the Alien ALR F800 RFID reader and an Alien Scanner Antenna. This system will allow for easier identification of cars in the campus' parking lots, streamlining the parking process and improving overall parking management.
 
+## Demo Videos
+
+- <a href="https://youtube.com/shorts/VZ_IQlKTV7E?si=XHDes0oxlY9vQiWp">Local Network testing<a>
+- <a href="https://www.youtube.com/watch?v=MNutOs0MZxM">Early Usage Demo Video<a>
+
 ## Client
 
 **Client:** <a href="https://www.wku.edu/transportation/">Parking and Transportation Department, WKU<a>
