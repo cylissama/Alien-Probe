@@ -10,18 +10,19 @@ This is a group project for our senior project course, CS496, where we develop a
 
 ## Project Objective
 
-The goal of this project is to create a RFID tag recognition system using the Alien ALR F800 RFID reader and an Alien Scanner Antenna. This system will allow for easier identification of cars in the campus' parking lots, streamlining the parking process and improving overall parking management.
+The goal of this project is to create an RFID tag recognition system using the Alien ALR F800 RFID reader and an Alien Scanner Antenna. This system will allow for easier identification of cars in the campus parking lots, streamlining the parking process and improving overall parking management.
 
 ## Structure
 
-The Alien PROBE Java GUI is just a simple app we created using JFrame for early testing. You can use a readers IP and Port just like the android app. Data can be saved locally into a file.
+The Alien PROBE Java GUI is just a simple app we created using JFrame for early testing. You can use a reader's IP and Port just like the Android app. Data can be saved locally into a file.
 
-Android App contains the Alien PROBE android application that this project focuses on. This app features all the main functionality meantioned within our documentaion. Scan, Save, and Upload RFID tag read data.
+Android App contains the Alien PROBE android application that this project focuses on. This app features all the main functionality mentioned within our documentation. Scan, Save, and Upload RFID tag read data.
 
 ## Demo Videos
 
 - <a href="https://youtube.com/shorts/VZ_IQlKTV7E?si=XHDes0oxlY9vQiWp">Local Network testing<a>
 - <a href="https://www.youtube.com/watch?v=MNutOs0MZxM">Early Usage Demo Video<a>
+- <a href="https://youtu.be/HNoL6W-Lq7Y">Current Mobile Alien P.R.O.B.E Version<a>
 
 ## Client
 
